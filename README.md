@@ -1,6 +1,47 @@
+<!--- README file for deployment of Opal-DataSHIELD ecosystem --->
+
+<!--- Add MDR-RA consortium image --->
 <p align="center">
     <img src="docs/imgs/mdr-ra.png" alt="mdr-ra.png" width=400 />
 </p>
+
+<!--- Define CSS style for floating bottom-up button displayed on bottom right 
+corner of the page --->
+<style>
+  /* Enable smooth scrolling */
+  @media screen and (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Style the button */
+  .top-link {
+    transition:       all .25s ease-in-out;
+    position:         fixed;
+    bottom:           0;
+    right:            0;
+    display:          inline-flex;
+    color:            #000000;
+    cursor:           pointer;
+    align-items:      center;
+    justify-content:  center;
+    margin:           0 2em 2em 0;
+    padding:          .25em;
+    width:            2em;
+    height:           1.5em;
+    background-color: #F5F5F56E;
+  }
+  .top-link:hover {
+    color: #FFFFFF;
+  }
+</style>
+
+<!--- Define button for bottom-up scrolling --->
+<a class="top-link hide" href="#top">
+  <span style="font-size: 17px">↑</span>
+</a>
+<a name="top"></a>
 
 # Opal-DataSHIELD ecosystem deployment and usage for the MDR-RA project
 
@@ -16,6 +57,7 @@ Docker supports container-based deployment enhancing the ecosystem's portability
 <br>&nbsp; 1.1 [Prerequisites](#prerequisets)
 <br>&nbsp;&nbsp; 1.1.1 [Operating System Requirements](#operating-system-requirements)
 <br>&nbsp;&nbsp; 1.1.2 [Docker engine deployment](#112-docker-engine-deployment)
+<br>&nbsp;&nbsp; 1.1.3 [Make installation](#113-make-installation)
 
 ### 1 System Deployment
 
@@ -185,3 +227,71 @@ This command will display the installed version of Docker Compose if it is corre
 installed. Seeing the version number confirms that Docker Compose is available and 
 ready for use. If you receive an error or no version information, you may need to check 
 your installation steps.
+
+##### 1.1.3 Make installation
+
+The `make` tool, commonly used in automation and build processes, is highly valuable 
+for deploying Docker images, especially in systems like OBiBa Opal-DataSHIELD. In this 
+setup, `make` simplifies deployment by handling repetitive commands through a concise 
+set of instructions within a `Makefile`. 
+
+Using `make` for Docker deployment in Opal-DataSHIELD, three key commands are defined:
+- `make deploy` – This command streamlines the initial deployment process, executing 
+a series of Docker commands to build and run containers as specified in the Docker 
+configuration.
+- **`make up`** – This command brings the server online, handling container startup 
+and initialization processes to ensure that the DataSHIELD server is ready for operations.
+- **`make stop`** – This command halts the server, stopping all relevant containers and 
+freeing resources.
+
+By organizing these operations within `make`, deployment becomes simpler, faster, and 
+more reliable, reducing manual command entry and mitigating risks of human error in 
+deployment steps.
+
+Below is a description of the steps required to install `make` on the machine designated 
+for deploying the OBiBa Opal-DataSHIELD ecosystem. These instructions will guide you 
+through the installation process, ensuring that your environment is correctly set up 
+for optimal performance and functionality.
+
+###### Installing Make
+
+The deployment of the Opal-DataSHIELD ecosystem requires the installation of `make` on the 
+host machine. 
+
+**NOTE-1**: The following steps assume that the user has **`sudo`** privileges to execute the 
+necessary commands for the installation process.
+
+Before installing `make` we need to update our OS by using the following command:
+```
+sudo apt update
+```
+
+Before starting installation, we may check whether `make` is already installed or not.
+Often `make` package can be included by default in Ubuntu distros, so we need to check 
+if it is already installed before proceeding. We can check it by running this command: 
+```
+make -version
+```
+
+If an error message is displayed, then the package is not installed on the machine. To 
+install `make`, type the following command:
+```
+sudo apt install make
+```
+
+To verify the installation, we may perform a double check. First, we can verify the 
+`make` binary location by typing:
+```
+ls /usr/bin/make
+```
+
+If not error message is displayed we can proceed with the second check:
+```
+make -version
+```
+
+If no error message is displayed, the `make`  has been correctly installed on your 
+machine. Otherwise, you may need to check your installation steps.
+
+<br><hr>
+[🔼 Back to top](#opal-datashield-ecosystem-deployment-and-usage-for-the-mdr-ra-project)
