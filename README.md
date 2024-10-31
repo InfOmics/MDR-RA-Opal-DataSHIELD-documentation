@@ -5,37 +5,7 @@
     <img src="docs/imgs/mdr-ra.png" alt="mdr-ra.png" width=400 />
 </p>
 
-<!--- Define CSS style for floating bottom-up button displayed on bottom right 
-corner of the page --->
-<style>
-  /* Enable smooth scrolling */
-  @media screen and (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
-  }
 
-  /* Style the button */
-  .top-link {
-    transition:       all .25s ease-in-out;
-    position:         fixed;
-    bottom:           0;
-    right:            0;
-    display:          inline-flex;
-    color:            #000000;
-    cursor:           pointer;
-    align-items:      center;
-    justify-content:  center;
-    margin:           0 2em 2em 0;
-    padding:          .25em;
-    width:            2em;
-    height:           1.5em;
-    background-color: #F5F5F56E;
-  }
-  .top-link:hover {
-    color: #FFFFFF;
-  }
-</style>
 
 <!--- Define button for bottom-up scrolling --->
 <a class="top-link hide" href="#top">
