@@ -34,3 +34,13 @@ Authentication Workflow:
 3. **Access Control:** Upon successful authentication, the system applies predefined access controls based on the user's role, permissions, and associated datasets.
 
 Other Authentication Options:
+
+| **Login Strategy**                  | **Description**                                   | **Requirements**                                                 |
+|-------------------------------------|---------------------------------------------------|------------------------------------------------------------------|
+| **Username/Password**               | Login using a username and password.              | - Username<br>- Password |
+| **Username/Password + OTP**   | Login using a username, password, and a time-based one-time password (TOTP) code for users with 2FA enabled. | - Username<br>- Password<br>- TOTP Code |
+| **Personal Access Token (PAT)**     | Login using a personal access token, which replaces the need for a password.  | - PAT |
+| **Key Pair in PEM Format**          | Login using a key pair (public and private key) in PEM format.                | - Key Pair |
+
+
+
