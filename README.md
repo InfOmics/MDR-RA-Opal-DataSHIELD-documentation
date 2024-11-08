@@ -6,13 +6,6 @@
 </p>
 
 
-
-<!--- Define button for bottom-up scrolling --->
-<a class="top-link hide" href="#top">
-  <span style="font-size: 17px">↑</span>
-</a>
-<a name="top"></a>
-
 # Opal-DataSHIELD ecosystem deployment and usage for the MDR-RA project
 
 ## Synopsis
@@ -24,12 +17,15 @@ Docker supports container-based deployment enhancing the ecosystem's portability
 ## Table of contents 
 
 1 [System deployment](#system-deployment)
-<br>&nbsp; 1.1 [Prerequisites](#prerequisets)
-<br>&nbsp;&nbsp; 1.1.1 [Operating System Requirements](#operating-system-requirements)
-<br>&nbsp;&nbsp; 1.1.2 [Docker engine deployment](#112-docker-engine-deployment)
-<br>&nbsp;&nbsp; 1.1.3 [Make installation](#113-make-installation)
+<br>&nbsp; 1.1 [Minimum Hardware Specifications](#11-minimum-hardware-specifications)
+<br>&nbsp; 1.2 [Prerequisites](#12-prerequisites)
+<br>&nbsp;&nbsp; 1.2.1 [Operating System Requirements](#operating-system-requirements)
+<br>&nbsp;&nbsp; 1.2.2 [Docker engine deployment](#112-docker-engine-deployment)
+<br>&nbsp;&nbsp; 1.2.3 [Make installation](#113-make-installation)
+<br>5 [Support](#5-support)
+<br>6 [Credits](#6-credits)
 
-### 1 System Deployment
+## 1 System Deployment
 
 This section provides a comprehensive guide for deploying the OBiBa Opal-DataSHIELD 
 ecosystem on a **Linux** environment. The deployment process will be discussed in 
@@ -41,7 +37,18 @@ DataSHIELD services. In the sections below, we will cover each prerequisite and 
 through the installation and configuration steps needed to prepare your environment for 
 deploying the Opal-DataSHIELD ecosystem.
 
-#### 1.1 Prerequisets
+### 1.1 Minimum Hardware Specifications
+
+To ensure optimal performance and stability, the following minimum hardware specifications are recommended:
+
+* **Memory (RAM):** 32 GB or higher
+* **Storage:** 500 GB HDD or SSD (SSD preferred for faster read/write operations)
+* **CPU:** 16 cores or more
+* **GPU (Optional):** While not required, the system may benefit from a compatible GPU for accelerated processing, especially for model training and other compute-intensive tasks.
+
+**NOTE-1:** These specifications are intended to handle large datasets and intensive computational processes. Lower configurations may experience reduced performance or stability issues.
+
+### 1.2 Prerequisites
 
 Before proceeding with the deployment of the OBiBa Opal-DataSHIELD ecosystem, ensure 
 that your system meets the following prerequisites. Below, we describe each prerequisite 
@@ -53,7 +60,7 @@ and provide guidance on how to install them or troubleshoot any missing componen
 - Docker-compose
 - make
 
-##### 1.1.1 Operating System Requirements
+#### 1.2.1 Operating System Requirements
 
 To ensure optimal performance and compatibility, the OBiBa Opal-DataSHIELD ecosystem 
 requires **Ubuntu 22.04.3 LTS (Jammy Jellyfish)** or a later version to operate correctly. 
@@ -72,7 +79,7 @@ in the applications menu or by using the keyboard shortcut **Ctrl + Alt + T**. T
 will be the primary tool for executing the commands required for the deployment of the OBiBa 
 Opal-DataSHIELD ecosystem.
 
-##### 1.1.2 Docker engine deployment
+#### 1.2.2 Docker engine deployment
 
 [Docker](https://www.docker.com/) is an open-source platform that enables developers 
 to automate the deployment, scaling, and management of applications within lightweight, 
@@ -103,7 +110,7 @@ the machine designated for deploying the OBiBa Opal-DataSHIELD ecosystem. These 
 will guide you through the installation process, ensuring that your environment is correctly 
 set up for optimal performance and functionality.
 
-###### Installing Docker and Docker Compose
+##### Installing Docker and Docker Compose
 
 The deployment of the Opal-DataSHIELD ecosystem requires the installation of the Docker 
 Engine on the host machine. For detailed instructions on installing the Docker Engine, 
@@ -198,7 +205,7 @@ installed. Seeing the version number confirms that Docker Compose is available a
 ready for use. If you receive an error or no version information, you may need to check 
 your installation steps.
 
-##### 1.1.3 Make installation
+#### 1.2.3 Make installation
 
 The `make` tool, commonly used in automation and build processes, is highly valuable 
 for deploying Docker images, especially in systems like OBiBa Opal-DataSHIELD. In this 
@@ -223,7 +230,7 @@ for deploying the OBiBa Opal-DataSHIELD ecosystem. These instructions will guide
 through the installation process, ensuring that your environment is correctly set up 
 for optimal performance and functionality.
 
-###### Installing Make
+##### Installing Make
 
 The deployment of the Opal-DataSHIELD ecosystem requires the installation of `make` on the 
 host machine. 
@@ -273,7 +280,29 @@ In this ecosystem, authentication can be done by providing username/password cre
 **password**  
 &emsp; User password in Opal (requires a user name).
 
+## 5 Support
 
+For support, please contact contact: 
+
+* **Email:** mdrra.univr.team@ateneo.univr.it
+<br>For any issues, questions, or further assistance, reach out to our dedicated support team via email
+
+* **Referents:**
+  - **Rosalba Giugno:** Principal Investigator
+  - **Manuel Tognon:** Post-Doctoral Researcher
+
+## 6 Credits
+
+- **Project Lead**: 
+  - Prof. Rosalba Giugno <rosalba.giugno@univr.it>
+
+- **Development Team**:  
+  - Simone Avesani, PhD <simone.avesani@univr.it>
+  - Gospel Ozioma Nnadi <gospelozioma.nnadi@univr.it>
+
+- **Documentation**:  
+  - Manuel Tognon, PhD <manuel.tognon@univr.it>
+  - Eva Viesi <eva.viesi@univr.it>
 
 <br><hr>
-[🔼 Back to top](#opal-datashield-ecosystem-deployment-and-usage-for-the-mdr-ra-project)
+[Back to top](#opal-datashield-ecosystem-deployment-and-usage-for-the-mdr-ra-project)
