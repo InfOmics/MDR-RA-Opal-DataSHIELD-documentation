@@ -14,14 +14,16 @@ initiation, and usage of the OBiBa Opal-DataSHIELD ecosystem required by the MDR
 project. To ensure portability and reproducibility the deployment employs [Docker](https://www.docker.com/). 
 Docker supports container-based deployment enhancing the ecosystem's portability.
 
+For detailed documentation regarding the OBiBa Opal and DataSHIELD systems, including their specific features and configurations options, please refer to [Document](docs/AdvancedTopics.md).
+
 ## Table of contents 
 
 1 [System deployment](#system-deployment)
 <br>&nbsp; 1.1 [Minimum Hardware Specifications](#11-minimum-hardware-specifications)
 <br>&nbsp; 1.2 [Prerequisites](#12-prerequisites)
-<br>&nbsp;&nbsp; 1.2.1 [Operating System Requirements](#operating-system-requirements)
-<br>&nbsp;&nbsp; 1.2.2 [Docker engine deployment](#112-docker-engine-deployment)
-<br>&nbsp;&nbsp; 1.2.3 [Make installation](#113-make-installation)
+<br>&nbsp;&nbsp; 1.2.1 [Operating System Requirements](#121-operating-system-requirements)
+<br>&nbsp;&nbsp; 1.2.2 [Docker engine deployment](#122-docker-engine-deployment)
+<br>&nbsp;&nbsp; 1.2.3 [Make installation](#123-make-installation)
 <br>5 [Support](#5-support)
 <br>6 [Credits](#6-credits)
 
@@ -47,6 +49,12 @@ To ensure optimal performance and stability, the following minimum hardware spec
 * **GPU (Optional):** While not required, the system may benefit from a compatible GPU for accelerated processing, especially for model training and other compute-intensive tasks.
 
 **NOTE-1:** These specifications are intended to handle large datasets and intensive computational processes. Lower configurations may experience reduced performance or stability issues.
+
+**NOTE-2:** These specifications apply to both host and tenant machines, though each has specific needs:
+
+* **Host Machine:** As the main data storage location, the host should prioritize having ample storage resources to manage extensive datasets effectively.
+
+* **Tenant Machine:** Primarily responsible for sending instructions and processing tasks, the tenant should focus on higher computational resources to manage potentially high volumes of concurrent requests to the host.
 
 ### 1.2 Prerequisites
 
