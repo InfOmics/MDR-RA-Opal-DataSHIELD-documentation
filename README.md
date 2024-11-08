@@ -263,5 +263,17 @@ make -version
 If no error message is displayed, the `make`  has been correctly installed on your 
 machine. Otherwise, you may need to check your installation steps.
 
+### 2 Authentication
+
+In this ecosystem, authentication can be done by providing username/password credentials:
+
+**username**  
+&emsp; User name in Opal (requires a password).
+
+**password**  
+&emsp; User password in Opal (requires a user name).
+
+
+
 <br><hr>
 [🔼 Back to top](#opal-datashield-ecosystem-deployment-and-usage-for-the-mdr-ra-project)
