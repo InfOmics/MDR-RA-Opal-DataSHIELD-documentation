@@ -5,7 +5,6 @@
     <img src="docs/imgs/mdr-ra.png" alt="mdr-ra.png" width=400 />
 </p>
 
-
 # Opal-DataSHIELD ecosystem deployment and usage for the MDR-RA project
 
 ## Synopsis
@@ -28,6 +27,7 @@ For detailed documentation regarding the OBiBa Opal and DataSHIELD systems, incl
 <br>6 [Credits](#6-credits)
 
 ## 1 System Deployment
+
 
 This section provides a comprehensive guide for deploying the OBiBa Opal-DataSHIELD 
 ecosystem on a **Linux** environment. The deployment process will be discussed in 
@@ -117,6 +117,7 @@ Below is a description of the steps required to install Docker and Docker Compos
 the machine designated for deploying the OBiBa Opal-DataSHIELD ecosystem. These instructions 
 will guide you through the installation process, ensuring that your environment is correctly 
 set up for optimal performance and functionality.
+
 
 ##### Installing Docker and Docker Compose
 
