@@ -17,17 +17,23 @@ For detailed documentation regarding the OBiBa Opal and DataSHIELD systems, incl
 
 ## Table of contents 
 
-1 [System deployment](#system-deployment)
-<br>&nbsp; 1.1 [Minimum Hardware Specifications](#11-minimum-hardware-specifications)
-<br>&nbsp; 1.2 [Prerequisites](#12-prerequisites)
-<br>&nbsp;&nbsp; 1.2.1 [Operating System Requirements](#121-operating-system-requirements)
-<br>&nbsp;&nbsp; 1.2.2 [Docker engine deployment](#122-docker-engine-deployment)
-<br>&nbsp;&nbsp; 1.2.3 [Make installation](#123-make-installation)
-<br>5 [Support](#5-support)
-<br>6 [Credits](#6-credits)
+1 - [System deployment](#system-deployment)
+<br>&nbsp;&nbsp; 1.1 - [Minimum Hardware Specifications](#11-minimum-hardware-specifications)
+<br>&nbsp;&nbsp; 1.2 - [Prerequisites](#12-prerequisites)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 1.2.1 - [Operating System Requirements](#121-operating-system-requirements)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 1.2.2 - [Docker engine deployment](#122-docker-engine-deployment)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 1.2.3 - [Make installation](#123-make-installation)
+<br>&nbsp;&nbsp; 1.3 - [Deploying Opal-DataSHIELD ecosystem](#13-deploying-opal-datashield-ecosystem)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 1.3.1 - [Downloading and cloning the repository](#131-downloading-and-cloning-the-repository)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 1.3.2 - [Prerequisites for ecosystem deployment](#132-prerequisites-for-ecosystem-deployment)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 1.3.3 [Ecosystem deployment](#133-ecosystem-deployment)
+<br>&nbsp;&nbsp;&nbsp;&nbsp; 1.3.4 [Quick post-deployment verification](#134-quick-post-deployment-verification)
+<br>2 - [Testing Opal-DataSHIELD ecosystem](#2-testing-opal-datashield-ecosystem)
+<br>3 - [Working with Opal-DataSHIELD ecosystem](#3-working-with-opal-datashield-ecosystem)
+<br>4 - [Support](#4-support)
+<br>5 - [Credits](#5-credits)
 
 ## 1 System Deployment
-
 
 This section provides a comprehensive guide for deploying the OBiBa Opal-DataSHIELD 
 ecosystem on a **Linux** environment. The deployment process will be discussed in 
@@ -131,7 +137,7 @@ necessary commands for the installation process.
 Before installing Docker, it is essential to remove any conflicting packages that 
 might interfere with the installation. To uninstall any potential conflicts, run the 
 following command:
-```
+```bash
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 
@@ -146,7 +152,7 @@ Before proceeding with the installation of Docker Engine, you must set up the Do
 repository. This allows you to install and update Docker directly from the repository.
 
 To set up Docker's apt repository, execute the following commands:
-```
+```bash
 # Add Docker's official GPG key:
 sudo apt-get update
 sudo apt-get install ca-certificates curl
@@ -164,13 +170,13 @@ sudo apt-get update
 
 Once the repository is set up, you can install the Docker packages using the following command:
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
+```bash
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 To verify that Docker has been installed successfully, you can run the hello-world image 
 with the following command:
-```
+```bash
 sudo docker run hello-world
 ```
 
@@ -184,7 +190,7 @@ group. This allows the user to run Docker commands without needing to prefix the
 
 Use the following command to add your user to the Docker group, replacing `<username>` 
 with your actual username:
-```
+```bash
 sudo usermod -aG docker <username>
 ```
 
@@ -192,7 +198,7 @@ After executing the command, you need to log out and log back in for the changes
 effect. Alternatively, you can also restart your terminal session.
 
 To verify that the user has been added to the Docker group, you can run:
-```
+```bash
 groups <username>
 ```
 
@@ -205,7 +211,7 @@ ecosystem.
 
 To verify that Docker Compose is installed and available on your system, run the 
 following command:
-```
+```bash
 docker-compose --version
 ```
 
@@ -222,7 +228,7 @@ setup, `make` simplifies deployment by handling repetitive commands through a co
 set of instructions within a `Makefile`. 
 
 Using `make` for Docker deployment in Opal-DataSHIELD, three key commands are defined:
-- `make deploy` – This command streamlines the initial deployment process, executing 
+- **`make deploy`** – This command streamlines the initial deployment process, executing 
 a series of Docker commands to build and run containers as specified in the Docker 
 configuration.
 - **`make up`** – This command brings the server online, handling container startup 
@@ -248,48 +254,239 @@ host machine.
 necessary commands for the installation process.
 
 Before installing `make` we need to update our OS by using the following command:
-```
+```bash
 sudo apt update
 ```
 
 Before starting installation, we may check whether `make` is already installed or not.
 Often `make` package can be included by default in Ubuntu distros, so we need to check 
 if it is already installed before proceeding. We can check it by running this command: 
-```
+```bash
 make -version
 ```
 
 If an error message is displayed, then the package is not installed on the machine. To 
 install `make`, type the following command:
-```
+```bash
 sudo apt install make
 ```
 
 To verify the installation, we may perform a double check. First, we can verify the 
 `make` binary location by typing:
-```
+```bash
 ls /usr/bin/make
 ```
 
 If not error message is displayed we can proceed with the second check:
-```
+```bash
 make -version
 ```
 
 If no error message is displayed, the `make`  has been correctly installed on your 
 machine. Otherwise, you may need to check your installation steps.
 
-### 2 Authentication
+### 1.3 Deploying Opal-DataSHIELD ecosystem
 
-In this ecosystem, authentication can be done by providing username/password credentials:
+After successfully installing all the required dependencies for the Opal-DataSHIELD 
+ecosystem, you are ready to begin the system deployment process. This section 
+provides a comprehensive, step-by-step guide to deploying the ecosystem, ensuring 
+a smooth and efficient setup.
 
-**username**  
-&emsp; User name in Opal (requires a password).
+Each step is designed to help you configure the necessary components, initialize 
+the environment, and verify that the ecosystem is fully operational. By following
+these instructions, you will be able to deploy the Opal-DataSHIELD ecosystem 
+effectively, enabling secure and privacy-preserving data analysis across distributed 
+environments.
 
-**password**  
-&emsp; User password in Opal (requires a user name).
+#### 1.3.1 Downloading and cloning the repository
 
-## 5 Support
+The first step in deploying the Opal-DataSHIELD ecosystem is to download and clone 
+the repository containing all the necessary files and resources required for the 
+setup. This repository includes configuration files, deployment scripts, documentation,
+and other essential components that will guide you through the deployment process.
+
+Cloning the repository ensures that you have the latest version of the files, along 
+with the proper directory structure, to streamline the setup. It is important to 
+ensure that `Git` is installed on your system before proceeding. If `Git` is not 
+installed, refer to the official 
+[installation guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
+for the Ubuntu OS.
+
+To download the repository, follow these steps:
+
+1. Open a terminal window.
+    - On Ubuntu systems, you can find the terminal by serahcing for "**Terminal**"
+    in the application menu.
+    - Alternatively, use the keyborad shortcut `Ctrl + Alt + T` on Ubuntu to open 
+    the terminal directly
+
+2. In the terminal, enter the following command to clone the repository:
+    ```bash
+    git clone https://github.com/InfOmics/MDR-RA-Opal-DataSHIELD-documentation.git
+    ```
+    This command will download the entire repository to your local machine.
+
+3. Once the cloning process is complete, navigate to the downloaded directory to 
+view its contents using the following command:
+    ```bash
+    cd MDRA-RA-Opal-DataSHIELD-documentation
+    ```
+
+The downloaded repository will be organized as follow:
+<p align="center">
+    <img src="docs/imgs/repo-structure.png" alt="repo-structure.png" width=400 />
+</p>
+
+- `certs/`: Contains the SSL/TLS certificates required to enable HTTPS for secure 
+communication between components.
+
+- `src/`: Includes scripts and utilities essential for deploying and managing the 
+ecosystem. These scripts automate various setup and maintenance tasks, ensuring 
+a streamlined deployment process.
+
+- `MakeFile`: A `Makefile` defines the rules and targets for deploying, configuring, 
+and managing the system. Using this file, you can execute deployment steps with 
+simple commands, such as `make deploy`, `make up` or `make stop`.
+
+- `docker-compose.yaml`: The Docker Compose configuration file specifies the 
+services, networks, and volumes required to deploy the Opal-DataSHIELD ecosystem. 
+It orchestrates the setup of containers, ensuring they are properly connected and 
+configured.
+
+- `traeffik.yaml`: Configuration file for Traefik, the reverse proxy and load 
+balancer used in the system. This file defines routing rules, SSL termination, 
+and other settings to manage external access to the deployed services.
+
+- `MDR_RA.env`: A `.env` file containing environment variables needed for deployment. 
+These variables define configuration options such as service ports, authentication 
+credentials, and paths to resources.
+
+- `LICENSE`: Provides the licensing terms under which the repository can be used, 
+modified, and distributed.
+
+#### 1.3.2 Prerequisites for ecosystem deployment 
+
+Before proceeding with the deployment of the Opal-DataSHIELD ecosystem, certain 
+configurations must be in place to ensure the system is accessible and secure:
+
+1. **Obtain SSL certificates**
+
+To enable secure access to the ecosystem through the HTTPS protocol, you must 
+first obtain valid SSL certificates. These certificates ensure encrypted communication 
+between users and the ecosystem, safeguarding sensitive data.
+
+- If you do not already have SSL certificates, you can generate them or purchase 
+them from a trusted certificate authority (CA).
+
+- Once obtained, place the certificates in the `certs/` directory of the cloned 
+repository.
+
+    - Ensure that the files are named appropriately and match the configuration 
+    requirements outlined in [**Section 1.3.1**](#131-downloading-and-cloning-the-repository) 
+    of the documentation.
+
+    - Verify that the certificates are accessible and have the necessary file permissions 
+    to be used during deployment.
+
+2. **Set Ports and IP address/domain**
+
+The next step is to configure the ports and the IP address or domain name that the 
+ecosystem will use to expose its services to the web.
+
+- Open the `docker-compose.yaml` file located in the root directory of the repository.
+
+- Locate the sections defining the ports and replace the placeholders with the desired 
+port numbers. For example:
+    ```yaml
+    ports:
+      - "80:80"  # HTTP port
+      - "443:443"  # HTTPS port
+    ```
+
+- Specify the IP address or domain name that will be used to access the ecosystem. 
+This is crucial for generating URLs and ensuring services are reachable.
+
+Refer to Section 3 of the [advanced documentation](docs/AdvancedTopics.md) for detailed instructions on editing the docker-compose.yaml file.
+
+3. **Verify configuration**
+
+- Ensure that the selected ports are open and not being used by other applications.
+
+- Verify that the IP address or domain name is correctly configured in your 
+DNS settings, if applicable.
+
+With the SSL certificates in place and the network settings configured, you 
+are ready to proceed to the deployment phase. Proper setup of these elements 
+is essential for ensuring a secure, accessible, and functional ecosystem.
+
+#### 1.3.3 Ecosystem deployment
+
+Once all configurations have been properly set up, including SSL 
+certificates, ports, and IP address/domain settings, you can proceed with the 
+deployment of the Opal-DataSHIELD ecosystem. The deployment process is 
+streamlined using the `Makefile` provided in the repository, which automates 
+the required steps.
+
+To start the deployment, open a terminal, navigate to the repository 
+directory, and type the following command:
+```bash
+make deploy
+```
+
+The `make deploy` command initiates a sequence of operations that automate the deployment process:
+
+1. Execution of Deployment Scripts:
+
+    - Various scripts from the `src/` directory are executed to prepare and 
+    configure the environment.
+
+    - These scripts handle tasks such as setting up directories, configuring 
+    services, and verifying dependencies.
+
+2. Docker Image Creation:
+
+    - The command builds the Docker images defined in the `docker-compose.
+    yaml` file.
+
+    - Settings from the `MDR_RA.env` file are used to configure these images, 
+    ensuring the ecosystem is tailored to your specifications.
+
+3. Service Startup:
+
+    - The Opal server is launched, making it accessible to external users 
+    through the configured HTTPS protocol.
+
+4. Integration of R Server (ROCK):
+
+    - The ROCK Docker image, which provides an R environment for executing 
+    DataSHIELD analysis, is added to the ecosystem.
+
+#### 1.3.4 Quick post-deployment verification
+
+After deploying the system, you can verify the following to quickly ensure successful deployment:
+
+- Opal Server Accessibility:
+    - Open a web browser and navigate to the configured domain or IP address 
+    using HTTPS (e.g., https://your-domain.com).
+
+    - Confirm that the Opal login page is visible and accessible.
+
+- Logs and Errors:
+
+    - Monitor the terminal output for any error messages during deployment.
+    - If any issues occur, consult the logs/ directory or the documentation for troubleshooting steps.
+
+With the ecosystem now deployed, you are ready to begin using Opal and 
+DataSHIELD for secure and collaborative data analysis. For additional 
+information on configuring users, datasets, or DataSHIELD analyses, refer to 
+[**Section 3**](#3-working-with-opal-datashield-ecosystem) in the 
+documentation.
+
+## 2 Testing Opal-DataSHIELD ecosystem
+
+## 3 Working with Opal-DataSHIELD ecosystem
+
+## 4 Support
 
 For support, please contact contact: 
 
@@ -300,7 +497,7 @@ For support, please contact contact:
   - **Rosalba Giugno:** Principal Investigator
   - **Manuel Tognon:** Post-Doctoral Researcher
 
-## 6 Credits
+## 5 Credits
 
 - **Project Lead**: 
   - Prof. Rosalba Giugno <rosalba.giugno@univr.it>
