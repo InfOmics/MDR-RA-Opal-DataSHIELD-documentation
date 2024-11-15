@@ -13,6 +13,7 @@
 <br>&nbsp; 1.1 [Authentication](#11-authentication)
 3 [Docker Compose](#3-docker-compose)
 
+
 ## 1 OBiBa Opal System
 
 
@@ -42,6 +43,5 @@ Other Authentication Options:
 | **Username/Password + OTP**   | Login using a username, password, and a time-based one-time password (TOTP) code for users with 2FA enabled. | - Username<br>- Password<br>- TOTP Code |
 | **Personal Access Token (PAT)**     | Login using a personal access token, which replaces the need for a password.  | - PAT |
 | **Key Pair in PEM Format**          | Login using a key pair (public and private key) in PEM format.                | - Key Pair |
-
 
 ## 3 Docker Compose
