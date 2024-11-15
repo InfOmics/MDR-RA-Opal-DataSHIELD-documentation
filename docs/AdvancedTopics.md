@@ -11,6 +11,7 @@
 
 1 [OBiBa Opal System](#1-obiba-opal-system)
 <br>&nbsp; 1.1 [Authentication](#11-authentication)
+3 [Docker Compose](#3-docker-compose)
 
 ## 1 OBiBa Opal System
 
@@ -43,4 +44,4 @@ Other Authentication Options:
 | **Key Pair in PEM Format**          | Login using a key pair (public and private key) in PEM format.                | - Key Pair |
 
 
-
+## 3 Docker Compose
