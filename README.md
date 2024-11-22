@@ -17,7 +17,8 @@ For detailed documentation regarding the OBiBa Opal and DataSHIELD systems, incl
 
 ## Table of contents 
 
-1 - [System deployment](#system-deployment)
+0 - [Quick Deployment](#0-quick-deployment)
+<br>1 - [System deployment](#system-deployment)
 <br>&nbsp;&nbsp; 1.1 - [Minimum Hardware Specifications](#11-minimum-hardware-specifications)
 <br>&nbsp;&nbsp; 1.2 - [Prerequisites](#12-prerequisites)
 <br>&nbsp;&nbsp;&nbsp;&nbsp; 1.2.1 - [Operating System Requirements](#121-operating-system-requirements)
@@ -27,11 +28,69 @@ For detailed documentation regarding the OBiBa Opal and DataSHIELD systems, incl
 <br>&nbsp;&nbsp;&nbsp;&nbsp; 1.3.1 - [Downloading and cloning the repository](#131-downloading-and-cloning-the-repository)
 <br>&nbsp;&nbsp;&nbsp;&nbsp; 1.3.2 - [Prerequisites for ecosystem deployment](#132-prerequisites-for-ecosystem-deployment)
 <br>&nbsp;&nbsp;&nbsp;&nbsp; 1.3.3 [Ecosystem deployment](#133-ecosystem-deployment)
-<br>&nbsp;&nbsp;&nbsp;&nbsp; 1.3.4 [Quick post-deployment verification](#134-quick-post-deployment-verification)
-<br>2 - [Testing Opal-DataSHIELD ecosystem](#2-testing-opal-datashield-ecosystem)
+<br>2 - [Quick Opal-DataSHIELD ecosystem test](#2-quick-opal-datashield-ecosystem-test)
 <br>3 - [Working with Opal-DataSHIELD ecosystem](#3-working-with-opal-datashield-ecosystem)
 <br>4 - [Support](#4-support)
 <br>5 - [Credits](#5-credits)
+
+## 0 Quick Deployment
+
+Before proceeding with the ecosystem deployment, ensure that you meet all the 
+[hardware requirements](#11-minimum-hardware-specifications) and 
+[prerequistes](#12-prerequisites) are met before starting the ecosystem
+deployment. If you're uncertain whether your setup complies with these recommendations, 
+review the respective sections to verify and make any necessary adjustments before 
+continuing.
+
+**Step 1: Clone the repository**
+
+Begin by downloading the repository to access the necessary deployment scripts and 
+resources. Use the following command to clone the repository:
+```bash
+git clone https://github.com/InfOmics/MDR-RA-Opal-DataSHIELD-documentation.git
+```
+
+**Step 2: Navigate to the Repository Directory**
+
+Once cloned, navigate to the directory containing the repository files:
+```bash
+cd MDR-RA-Opal-DataSHIELD-documentation
+```
+
+**Step 3: Obtain SSL certficates**
+
+Move or copy the obtained SSL certificates to the certs directory within your 
+project folder:
+```bash
+cp mycert.pem certs/  # or mv mycert.pem certs/
+```
+
+**Step 4: Configure Deployment Environment Variables**
+
+Navigate to the project folder and set up the environment variables required for 
+deployment. Open `mdr_ra.env` and modify the following line, replacing 
+`example.domain.com` with your actual domain name (e.g.`my.domain.com`):
+```yaml
+IP_DOMAIN=my.domain.com  # replaces IP_DOMAIN=myDomainAddress
+```
+
+Save and close the file.
+
+**Step 5: Deploy the ecosystem**
+
+With the SSL certificates in place and environment variables configured, you're 
+ready to deploy. Use the provided `make` command:
+```bash
+make deploy
+```
+
+This command will:
+
+- Validate the environment setup.
+- Configure the services to use the SSL certificates.
+- Start the deployment process.
+
+For a quick post-deployment verification, see [section 2](#2-quick-opal-datashield-ecosystem-test).
 
 ## 1 System Deployment
 
@@ -353,7 +412,7 @@ services, networks, and volumes required to deploy the Opal-DataSHIELD ecosystem
 It orchestrates the setup of containers, ensuring they are properly connected and 
 configured.
 
-- `traeffik.yaml`: Configuration file for Traefik, the reverse proxy and load 
+- `traefik.yaml`: Configuration file for Traefik, the reverse proxy and load 
 balancer used in the system. This file defines routing rules, SSL termination, 
 and other settings to manage external access to the deployed services.
 
@@ -373,7 +432,8 @@ configurations must be in place to ensure the system is accessible and secure:
 
 To enable secure access to the ecosystem through the HTTPS protocol, you must 
 first obtain valid SSL certificates. These certificates ensure encrypted communication 
-between users and the ecosystem, safeguarding sensitive data.
+between users and the ecosystem, safeguarding sensitive data. Be sure that certificates
+match the port and domain name designated for the ecosystem deployment.
 
 - If you do not already have SSL certificates, you can generate them or purchase 
 them from a trusted certificate authority (CA).
@@ -393,18 +453,22 @@ repository.
 The next step is to configure the ports and the IP address or domain name that the 
 ecosystem will use to expose its services to the web.
 
-- Open the `docker-compose.yaml` file located in the root directory of the repository.
+- Open the `mdr_ra.env` file located in the root directory of the repository.
 
 - Locate the sections defining the ports and replace the placeholders with the desired 
 port numbers. For example:
     ```yaml
-    ports:
-      - "80:80"  # HTTP port
-      - "443:443"  # HTTPS port
+    HTTP_PORT=80
+    HTTPS_PORT=443
+    TRAEFIK_PORT=8080
     ```
 
-- Specify the IP address or domain name that will be used to access the ecosystem. 
-This is crucial for generating URLs and ensuring services are reachable.
+- Locate the section defining the domain name and replace the placeholder with 
+the desired domain name. This is crucial for generating URLs and ensuring services 
+are reachable. For example:
+    ```yaml
+    IP_DOMAIN=my.domain.com  # replace default value IP_DOMAIN=myDomainAddress
+    ```
 
 Refer to Section 3 of the [advanced documentation](docs/AdvancedTopics.md) for detailed instructions on editing the docker-compose.yaml file.
 
@@ -435,12 +499,12 @@ make deploy
 
 The `make deploy` command initiates a sequence of operations that automate the deployment process:
 
-1. Execution of Deployment Scripts:
+1. Execution of Deployment Script:
 
-    - Various scripts from the `src/` directory are executed to prepare and 
+    - This script from the `src/` directory is executed to prepare and 
     configure the environment.
 
-    - These scripts handle tasks such as setting up directories, configuring 
+    - This script handles tasks such as setting up directories, configuring 
     services, and verifying dependencies.
 
 2. Docker Image Creation:
@@ -461,7 +525,7 @@ The `make deploy` command initiates a sequence of operations that automate the d
     - The ROCK Docker image, which provides an R environment for executing 
     DataSHIELD analysis, is added to the ecosystem.
 
-#### 1.3.4 Quick post-deployment verification
+## 2 Quick Opal-DataSHIELD ecosystem test
 
 After deploying the system, you can verify the following to quickly ensure successful deployment:
 
@@ -481,8 +545,6 @@ DataSHIELD for secure and collaborative data analysis. For additional
 information on configuring users, datasets, or DataSHIELD analyses, refer to 
 [**Section 3**](#3-working-with-opal-datashield-ecosystem) in the 
 documentation.
-
-## 2 Testing Opal-DataSHIELD ecosystem
 
 ## 3 Working with Opal-DataSHIELD ecosystem
 
