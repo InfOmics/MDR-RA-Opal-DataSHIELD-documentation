@@ -71,7 +71,7 @@ Navigate to the project folder and set up the environment variables required for
 deployment. Open `mdr_ra.env` and modify the following line, replacing 
 `example.domain.com` with your actual domain name (e.g.`my.domain.com`):
 ```yaml
-IP_DOMAIN=my.domain.com  # replaces IP_DOMAIN=example.domain.com
+IP_DOMAIN=my.domain.com  # replaces IP_DOMAIN=myDomainAddress
 ```
 
 Save and close the file.
@@ -453,18 +453,22 @@ repository.
 The next step is to configure the ports and the IP address or domain name that the 
 ecosystem will use to expose its services to the web.
 
-- Open the `docker-compose.yaml` file located in the root directory of the repository.
+- Open the `mdr_ra.env` file located in the root directory of the repository.
 
 - Locate the sections defining the ports and replace the placeholders with the desired 
 port numbers. For example:
     ```yaml
-    ports:
-      - "80:80"  # HTTP port
-      - "443:443"  # HTTPS port
+    HTTP_PORT=80
+    HTTPS_PORT=443
+    TRAEFIK_PORT=8080
     ```
 
-- Specify the IP address or domain name that will be used to access the ecosystem. 
-This is crucial for generating URLs and ensuring services are reachable.
+- Locate the section defining the domain name and replace the placeholder with 
+the desired domain name. This is crucial for generating URLs and ensuring services 
+are reachable. For example:
+    ```yaml
+    IP_DOMAIN=my.domain.com  # replace default value IP_DOMAIN=myDomainAddress
+    ```
 
 Refer to Section 3 of the [advanced documentation](docs/AdvancedTopics.md) for detailed instructions on editing the docker-compose.yaml file.
 
