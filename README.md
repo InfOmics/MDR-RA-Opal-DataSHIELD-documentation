@@ -30,6 +30,17 @@ For detailed documentation regarding the OBiBa Opal and DataSHIELD systems, incl
 <br>&nbsp;&nbsp;&nbsp;&nbsp; 1.3.3 [Ecosystem deployment](#133-ecosystem-deployment)
 <br>2 - [Quick Opal-DataSHIELD ecosystem test](#2-quick-opal-datashield-ecosystem-test)
 <br>3 - [Working with Opal-DataSHIELD ecosystem](#3-working-with-opal-datashield-ecosystem)
+<br>&nbsp;&nbsp;3.1 [Log In and Test the Opal-DataSHIELD Web Interface](#31-log-in-and-test-the-opal-datashield-web-interface)
+<br>&nbsp;&nbsp;3.2 [Create a New User Profile (Administrator-Only Task)](#32-create-a-new-user-profile-administrator-only-task)
+<br>&nbsp;&nbsp;3.3 [Enable Two-Factor Authentication (2FA)](#33-enable-two-factor-authentication-2fa)
+<br>&nbsp;&nbsp;3.4 [Change User Permissions](#34-change-user-permissions)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;3.4.1 [Change System Permissions (Administrator Only)](#341-change-system-permissions-administrator-only)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;3.4.2 [Change Project Permissions](#342-change-project-permissions)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;3.4.3 [Change Table Permissions](#343-change-table-permissions)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;3.4.4 [Change DataSHIELD Permissions (Administrator Only)](#344-change-datashield-permissions-administrator-only)
+<br>&nbsp;&nbsp;3.5 [Manage Folders and Files](#35-manage-folders-and-files)
+<br>&nbsp;&nbsp;3.6 [Create and Manage Projects](#36-create-and-manage-projects)
+<br>&nbsp;&nbsp;3.7 [Quick DataSHIELD Client Test](#37-quick-datashield-client-test)
 <br>4 - [Support](#4-support)
 <br>5 - [Credits](#5-credits)
 
@@ -480,7 +491,9 @@ are reachable. For example:
     KEY_FILE=privkey.pem     # replace default value 
     ```
 
-Refer to Section 3 of the [advanced documentation](docs/AdvancedTopics.md) for detailed instructions on editing the docker-compose.yml file.
+Refer to [Section 3](docs/AdvancedTopics.md#3-docker-compose) in the 
+**Advanced Topics Documentation** for detailed instructions on editing 
+`docker-compose.yml`.
 
 3. **Verify configuration**
 
@@ -533,7 +546,7 @@ The `make deploy` command initiates a sequence of operations that automate the d
 4. Integration of R Server (ROCK):
 
     - The ROCK Docker image, which provides an R environment for executing 
-    DataSHIELD analysis is added to the ecosystem.
+    DataSHIELD analysis, is added to the ecosystem.
 
 ## 2 Quick Opal-DataSHIELD ecosystem test
 
@@ -558,52 +571,191 @@ documentation.
 
 ## 3 Working with Opal-DataSHIELD ecosystem
 
-### 3.1. Log in and test the Opal-DataSHIELD web interface
-Navigate to the Opal login page at https://your-domain.com and sign in with the user credentials.  
-**NOTE-1**: After the first deployment, sign in as administrator using "administrator" as the user's name and the password defined in the `MDR_RA.env` file. 
+This section provides an introduction to the essential operations for managing 
+the Opal-DataSHIELD ecosystem. It covers fundamental tasks such as logging in, 
+creating and managing users, enabling two-factor authentication (2FA) for 
+added security, and configuring user permissions.
 
-### 3.2 Create a new user profile (only for system administrator users)
-Access the Administration page by clicking on the "Administration" tab. Navigate to the "Users and groups" page and click the "+ ADD" button to create a new user with a password. 
+### 3.1. Log In and Test the Opal-DataSHIELD Web Interface
+
+To access the Opal web interface, open a browser and navigate to:
+`https://your-domain.com`
+
+Log in using the appropriate user credentials.
+
+**NOTE-1**: For the initial deployment, log in as the administrator using the 
+default username `administrator` and the password set in the `MDR_RA.env`
+configuration file during setup.
+
+This step ensures the Opal web interface is functioning correctly and ready for further configuration.
+
+### 3.2 Create a New User Profile (Administrator-Only Task)
+
+To create a new user profile, follow these steps:
+
+1. Access the **Administration** page by clicking on the "**Administration**" 
+    tab in the Opal web interface.
+
+2. Navigate to the "**Users and Groups**" section.
+
+3. Click the "**+ ADD**" button to open the user creation form.
+
+4. Enter the required details for the new user, including a username and 
+    password.
+5. Save the changes to complete the user creation process.
+
+This functionality is restricted to system administrators and ensures secure and controlled access to the Opal-DataSHIELD ecosystem.
 
 ### 3.3 Enable Two-Factor Authentication (2FA)
-Log in with your credentials and select "My profile" on the top right menu. Go to the "Two-Factor Authentication" section, click the "Enable 2FA" button, and follow the instructions.
 
-### 3.4 Change user permissions 
-#### 3.4.1 Change system permissions (only for system administrator users)
-- Access the Administration page and navigate to the system "General Settings" page. 
-- Go to the "Permissions" section and click the "+" button to add user permission. 
-- Type the user's name in the input field, select the permission option, and submit.
-  
-#### 3.4.2 Change project permissions 
-- Access the Projects page and select the desired project.
-- Click the "PERMISSIONS" tab and the "+ ADD" button to add user permission.
-- Type the user's name in the input field, select the permission option, and submit.
+To enhance your account's security by enabling Two-Factor Authentication 
+(2FA), follow these steps:
 
-#### 3.4.3 Change table permissions 
-- Access the Projects page and select the desired project and table.
-- Click the "PERMISSIONS" tab and the "+ ADD" button to add user permission. 
-- Type the user's name in the input field, select the permission option, and submit.
-  
-#### 3.4.4 Change DataSHIELD permissions (only for system administrator users)
-- Access the Administration page and navigate to the "DataSHIELD" section. 
-- Go to the "Permissions" section and click the "+" button to add user permission. 
-- Type the user's name in the input field, select the permission option, and submit.
+1. Log in to the Opal web interface using your credentials.
 
-#### 3.5 Create folders and files
-- Access the Files page to navigate into the user file system. 
-- Click the "+ ADD FOLDER" button to create a new folder. 
-- Access the folder and click the "UPLOAD" button to upload a file from the local machine (the file should be in tabular format).
-  
-#### 3.6 Create projects (only for system administrator and add project users)
-- Access the Projects page by clicking on the "Projects" tab. 
-- Click on the "+ ADD" button to create a new project, type the Name in the input field and optionally add a Title and Description. 
-- Access the project and click the "Tables (views)" arrow.
-- Click the "IMPORT" button, select "Import from file", choose the desired data format, and continue. 
-- Click on "Select" and navigate to the path of the file to upload, continue and import.
-  
-#### 3.7 Quick DataSHIELD client test
-- Open R and run the following code snippet to connect to Opal and retrieve data statistics:
+2. Click on "**My Profile**" in the top-right menu to access your account 
+    settings.
 
+3. Scroll down to the "**Two-Factor Authentication**" section.
+
+4. Click the "**Enable 2FA**" button to start the setup process.
+
+5. Follow the on-screen instructions to complete the configuration, which may 
+include scanning a QR code with an authenticator app and verifying the 
+generated code.
+
+Once enabled, 2FA adds an extra layer of protection, requiring a one-time code 
+in addition to your password for future logins.
+
+### 3.4 Change User Permissions 
+
+Managing user permissions in the Opal-DataSHIELD ecosystem allows 
+administrators to control access to system features, projects, tables, and 
+DataSHIELD operations. The following sections outline how to modify 
+permissions at different levels.
+
+#### 3.4.1 Change System Permissions (Administrator Only)
+
+1. Access the **Administration** page.
+
+2. Navigate to the **General Settings** section.
+
+3. Click on the **Permissions** tab and then the **+ ADD** button to assign 
+new permissions.
+
+4. Enter the user's name in the input field.
+
+5. Select the desired permission level from the available options (e.g., read, 
+write, admin).
+
+6. Click **Submit** to save changes.
+  
+#### 3.4.2 Change Project Permissions 
+
+1. Go to the **Projects** page and select the project for which permissions 
+need to be modified.
+
+2. Open the **Permissions** tab within the selected project.
+
+3. Click the **+ ADD** button to add a new permission.
+
+4. Enter the user's name and choose the appropriate permission level.
+
+5. Submit the changes to update the permissions.
+
+
+#### 3.4.3 Change Table Permissions 
+
+1. Navigate to the **Projects** page and select the desired project.
+
+2. Choose the table within the project for which permissions need to be 
+modified.
+
+3. Open the **Permissions** tab under the table settings.
+
+4. Click the **+ ADD** button to assign permissions.
+
+Enter the user's name, select the permission type, and submit your changes.
+  
+#### 3.4.4 Change DataSHIELD Permissions (Administrator Only)
+
+1. Access the **Administration** page and go to the **DataSHIELD** section.
+
+2. Open the **Permissions** tab.
+
+3. Click the **+ ADD** button to assign DataSHIELD-specific permissions.
+
+4. Enter the user's name in the input field.
+
+5. Select the permission level (e.g., allow access to specific DataSHIELD operations).
+
+6. Save the changes by clicking **Submit**.
+
+### 3.5 Manage Folders and Files
+
+Efficiently organize and upload data into the user file system by creating 
+folders and uploading files. Follow the steps below:
+
+1. **Create a New Folder**
+
+    - Navigate to the Files page within the Opal interface.
+
+    - Click the **+ ADD** FOLDER button.
+
+    - Enter a name for the folder and confirm to create it.
+
+2. **Upload Files**
+
+    - Open the newly created folder or any existing folder where the file 
+        should be uploaded.
+
+    - Click the **UPLOAD** button.
+
+    - Select the file from your local machine and confirm the upload.
+
+**NOTE-2**: Ensure the uploaded file is in a compatible tabular format for 
+proper processing.
+  
+### 3.6 Create and Manage Projects
+
+Projects in the Opal-DataSHIELD ecosystem serve as containers for data tables 
+and related configurations. Follow these steps to create and populate projects:
+
+1. **Create a New Project**
+
+    - Navigate to the **Projects** page by selecting the Projects tab.
+
+    - Click the **+ ADD** button to initiate project creation.
+
+    - Enter the project **Name** (required) in the input field.
+
+    - Optionally, provide a **Title** and **Description** to give context to 
+        the project.
+
+    - Confirm to create the project.
+
+2. **Import Data Tables**
+
+    - Open the newly created project by clicking on its name in the Projects 
+        list.
+    - Expand the **Tables (views)** section by clicking the arrow next to it.
+
+    - Click the **IMPORT** button and choose Import from file.
+
+    - Select the desired **data format** (e.g., CSV, Excel) and proceed.
+
+    - Click **Select**, navigate to the file's location in the system, and 
+    upload it.
+
+    - Follow the prompts to configure and finalize the import process.
+
+**NOTE-3**: Ensure the data file is clean and formatted correctly to avoid 
+issues during import.
+  
+### 3.7 Quick DataSHIELD Client Test
+
+To verify the functionality of the DataSHIELD client, follow these steps to 
+connect to your Opal server and retrieve basic data statistics, open R and run:
 ```R
 # DataSHIELD user
 
