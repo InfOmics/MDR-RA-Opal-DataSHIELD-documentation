@@ -573,12 +573,12 @@ Log in with your credentials and select "My profile" on the top right menu. Go t
 - Access the Administration page and navigate to the system "General Settings" page. 
 - Go to the "Permissions" section and click the "+" button to add user permission. 
 - Type the user's name in the input field, select the permission option, and submit.
-- 
+  
 #### 3.4.2 Change project permissions 
 - Access the Projects page and select the desired project.
 - Click the "PERMISSIONS" tab and the "+ ADD" button to add user permission.
 - Type the user's name in the input field, select the permission option, and submit.
-- 
+
 #### 3.4.3 Change table permissions 
 - Access the Projects page and select the desired project and table.
 - Click the "PERMISSIONS" tab and the "+ ADD" button to add user permission. 
@@ -593,14 +593,14 @@ Log in with your credentials and select "My profile" on the top right menu. Go t
 - Access the Files page to navigate into the user file system. 
 - Click the "+ ADD FOLDER" button to create a new folder. 
 - Access the folder and click the "UPLOAD" button to upload a file from the local machine (the file should be in tabular format).
-- 
+  
 #### 3.6 Create projects (only for system administrator and add project users)
 - Access the Projects page by clicking on the "Projects" tab. 
 - Click on the "+ ADD" button to create a new project, type the Name in the input field and optionally add a Title and Description. 
 - Access the project and click the "Tables (views)" arrow.
 - Click the "IMPORT" button, select "Import from file", choose the desired data format, and continue. 
 - Click on "Select" and navigate to the path of the file to upload, continue and import.
-- 
+  
 #### 3.7 Quick DataSHIELD client test
 - Open R and run the following code snippet to connect to Opal and retrieve data statistics:
 
