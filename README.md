@@ -68,7 +68,7 @@ cp mycert.pem certs/  # or mv mycert.pem certs/
 **Step 4: Configure Deployment Environment Variables**
 
 Navigate to the project folder and set up the environment variables required for 
-deployment. Open `mdr_ra.env` and modify the following line, replacing 
+deployment. Open `MDR_RA.env` and modify the following line, replacing 
 `example.domain.com` with your actual domain name (e.g.`my.domain.com`):
 ```yaml
 IP_DOMAIN=my.domain.com  # replaces IP_DOMAIN=myDomainAddress
@@ -330,13 +330,13 @@ install `make`, type the following command:
 sudo apt install make
 ```
 
-To verify the installation, we may perform a double check. First, we can verify the 
+To verify the installation, we may perform a double-check. First, we can verify the 
 `make` binary location by typing:
 ```bash
 ls /usr/bin/make
 ```
 
-If not error message is displayed we can proceed with the second check:
+If no error message is displayed we can proceed with the second check:
 ```bash
 make -version
 ```
@@ -374,9 +374,9 @@ for the Ubuntu OS.
 To download the repository, follow these steps:
 
 1. Open a terminal window.
-    - On Ubuntu systems, you can find the terminal by serahcing for "**Terminal**"
+    - On Ubuntu systems, you can find the terminal by searching for "**Terminal**"
     in the application menu.
-    - Alternatively, use the keyborad shortcut `Ctrl + Alt + T` on Ubuntu to open 
+    - Alternatively, use the keyboard shortcut `Ctrl + Alt + T` on Ubuntu to open 
     the terminal directly
 
 2. In the terminal, enter the following command to clone the repository:
@@ -391,7 +391,7 @@ view its contents using the following command:
     cd MDRA-RA-Opal-DataSHIELD-documentation
     ```
 
-The downloaded repository will be organized as follow:
+The downloaded repository will be organized as follows:
 <p align="center">
     <img src="docs/imgs/repo-structure.png" alt="repo-structure.png" width=400 />
 </p>
@@ -407,12 +407,12 @@ a streamlined deployment process.
 and managing the system. Using this file, you can execute deployment steps with 
 simple commands, such as `make deploy`, `make up` or `make stop`.
 
-- `docker-compose.yaml`: The Docker Compose configuration file specifies the 
+- `docker-compose.yml`: The Docker Compose configuration file specifies the 
 services, networks, and volumes required to deploy the Opal-DataSHIELD ecosystem. 
 It orchestrates the setup of containers, ensuring they are properly connected and 
 configured.
 
-- `traefik.yaml`: Configuration file for Traefik, the reverse proxy and load 
+- `traefik.yml`: Configuration file for Traefik, the reverse proxy and load 
 balancer used in the system. This file defines routing rules, SSL termination, 
 and other settings to manage external access to the deployed services.
 
@@ -453,14 +453,18 @@ repository.
 The next step is to configure the ports and the IP address or domain name that the 
 ecosystem will use to expose its services to the web.
 
-- Open the `mdr_ra.env` file located in the root directory of the repository.
+- Open the `MDR_RA.env` file located in the root directory of the repository.
 
-- Locate the sections defining the ports and replace the placeholders with the desired 
-port numbers. For example:
+- Locate the section defining the Opal administrator password and replace the placeholder with the desired password. For example:
     ```yaml
-    HTTP_PORT=80
-    HTTPS_PORT=443
-    TRAEFIK_PORT=8080
+    OPAL_ADMINISTRATOR_PASSWORD=administrator  # replace default value 
+    ```
+
+- Locate the sections defining the ports and replace the placeholders with the desired port numbers. For example:
+    ```yaml
+    HTTP_PORT=80       # replace default value 
+    HTTPS_PORT=443     # replace default value 
+    TRAEFIK_PORT=8080  # replace default value 
     ```
 
 - Locate the section defining the domain name and replace the placeholder with 
@@ -470,7 +474,13 @@ are reachable. For example:
     IP_DOMAIN=my.domain.com  # replace default value IP_DOMAIN=myDomainAddress
     ```
 
-Refer to Section 3 of the [advanced documentation](docs/AdvancedTopics.md) for detailed instructions on editing the docker-compose.yaml file.
+- Locate the section defining the file names of certificates and replace the placeholder with the desired file names. For example:
+    ```yaml
+    CERT_FILE=fullchain.pem  # replace default value 
+    KEY_FILE=privkey.pem     # replace default value 
+    ```
+
+Refer to Section 3 of the [advanced documentation](docs/AdvancedTopics.md) for detailed instructions on editing the docker-compose.yml file.
 
 3. **Verify configuration**
 
@@ -523,7 +533,7 @@ The `make deploy` command initiates a sequence of operations that automate the d
 4. Integration of R Server (ROCK):
 
     - The ROCK Docker image, which provides an R environment for executing 
-    DataSHIELD analysis, is added to the ecosystem.
+    DataSHIELD analysis is added to the ecosystem.
 
 ## 2 Quick Opal-DataSHIELD ecosystem test
 
@@ -547,6 +557,88 @@ information on configuring users, datasets, or DataSHIELD analyses, refer to
 documentation.
 
 ## 3 Working with Opal-DataSHIELD ecosystem
+
+### 3.1. Log in and test the Opal-DataSHIELD web interface
+Navigate to the Opal login page at https://your-domain.com and sign in with the user credentials.  
+**NOTE-1**: After the first deployment, sign in as administrator using "administrator" as the user's name and the password defined in the `MDR_RA.env` file. 
+
+### 3.2 Create a new user profile (only for system administrator users)
+Access the Administration page by clicking on the "Administration" tab. Navigate to the "Users and groups" page and click the "+ ADD" button to create a new user with a password. 
+
+### 3.3 Enable Two-Factor Authentication (2FA)
+Log in with your credentials and select "My profile" on the top right menu. Go to the "Two-Factor Authentication" section, click the "Enable 2FA" button, and follow the instructions.
+
+### 3.4 Change user permissions 
+#### 3.4.1 Change system permissions (only for system administrator users)
+- Access the Administration page and navigate to the system "General Settings" page. 
+- Go to the "Permissions" section and click the "+" button to add user permission. 
+- Type the user's name in the input field, select the permission option, and submit.
+- 
+#### 3.4.2 Change project permissions 
+- Access the Projects page and select the desired project.
+- Click the "PERMISSIONS" tab and the "+ ADD" button to add user permission.
+- Type the user's name in the input field, select the permission option, and submit.
+- 
+#### 3.4.3 Change table permissions 
+- Access the Projects page and select the desired project and table.
+- Click the "PERMISSIONS" tab and the "+ ADD" button to add user permission. 
+- Type the user's name in the input field, select the permission option, and submit.
+  
+#### 3.4.4 Change DataSHIELD permissions (only for system administrator users)
+- Access the Administration page and navigate to the "DataSHIELD" section. 
+- Go to the "Permissions" section and click the "+" button to add user permission. 
+- Type the user's name in the input field, select the permission option, and submit.
+
+#### 3.5 Create folders and files
+- Access the Files page to navigate into the user file system. 
+- Click the "+ ADD FOLDER" button to create a new folder. 
+- Access the folder and click the "UPLOAD" button to upload a file from the local machine (the file should be in tabular format).
+- 
+#### 3.6 Create projects (only for system administrator and add project users)
+- Access the Projects page by clicking on the "Projects" tab. 
+- Click on the "+ ADD" button to create a new project, type the Name in the input field and optionally add a Title and Description. 
+- Access the project and click the "Tables (views)" arrow.
+- Click the "IMPORT" button, select "Import from file", choose the desired data format, and continue. 
+- Click on "Select" and navigate to the path of the file to upload, continue and import.
+- 
+#### 3.7 Quick DataSHIELD client test
+- Open R and run the following code snippet to connect to Opal and retrieve data statistics:
+
+```R
+# DataSHIELD user
+
+# load libraries
+library(DSI)
+library(DSOpal)
+library(dsBaseClient)
+
+# connection builder
+builder <- DSI::newDSLoginBuilder()
+
+builder$append(server = "server1", url = "https://your-domain.com",
+               user = "user", password = "password", 
+               driver = "OpalDriver",
+               options='list(ssl_verifyhost=0, ssl_verifypeer=0)')
+
+logindata <- builder$build()
+
+# log in
+connections <- DSI::datashield.login(logins = logindata, assign = TRUE)
+
+# data access
+# NOTE: 
+# - "TEST" is the project's name
+# - "airway" is the table's name
+DSI::datashield.assign.table(conns = connections, symbol = "Example", 
+                             table = c("TEST.airway"))
+# table dimensions
+ds.dim(x = 'Example')
+# table column names 
+ds.colnames(x = 'Example')
+
+# log out
+DSI::datashield.logout(connections)
+```
 
 ## 4 Support
 
