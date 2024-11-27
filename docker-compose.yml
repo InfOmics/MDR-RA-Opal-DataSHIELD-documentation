@@ -1,0 +1,117 @@
+services:
+        reverse-proxy:
+                image: traefik:v2.10
+                container_name: traefik
+                restart: always
+                ports:
+                        - "${HTTP_PORT}:${HTTP_PORT}"       # HTTP
+                        - "${HTTPS_PORT}:${HTTPS_PORT}"     # HTTPS
+                        - "${TRAEFIK_PORT}:${TRAEFIK_PORT}"   # Traefik dashboard
+
+                volumes:
+                        - "/var/run/docker.sock:/var/run/docker.sock:ro"  # Docker socket to listen for container events
+                        - "./certs:/certs"                                # Mount the folder with SSL certificates
+                        - "./traefik.yml:/config/traefik.yml"
+                environment:
+                        -  CERT=${CERT_FILE}
+                        -  KEY=${KEY_FILE}
+                labels:
+                        - "traefik.enable=true"                           # Enable Traefik for this container
+                        - "traefik.http.routers.traefik.rule=Host(`traefik.localhost`)"
+                        - "traefik.http.routers.traefik.entrypoints=websecure"
+                        - "traefik.http.routers.traefik.service=api@internal"
+                        - "traefik.http.routers.traefik.tls=true"
+                        # Middleware to redirect HTTP to HTTPS
+                        - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+                        # Apply middleware to the web entrypoint (HTTP)
+                        - "traefik.http.routers.http-catchall.entrypoints=web"
+                        - "traefik.http.routers.http-catchall.rule=HostRegexp(`{host:.+}`)"
+                        - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
+                command:
+                        - "--configFile=/config/traefik.yml"
+                        - "--providers.file.watch=true"
+
+        opal:
+                image: obiba/opal:5.0.0-RC4
+                container_name: opal
+                expose:
+                        - ${OPAL_PORT}
+                links:
+                        - mongo
+                        - mysqldata
+                        - mariadbdata
+                        - postgresdata
+                        - rock
+                environment:
+                        - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMINISTRATOR_PASSWORD}
+                        - MONGO_HOST=${MONGO_HOST}
+                        - MONGO_PORT=${MONGO_PORT}
+                        - MONGO_USER=${MONGO_USER}
+                        - MONGO_PASSWORD=${MONGO_PASSWORD}
+                        - MYSQLDATA_DATABASE=${MYSQLDATA_DATABASE}
+                        - MYSQLDATA_HOST=${MYSQLDATA_HOST}
+                        - MYSQLDATA_USER=${MYSQLDATA_USER}
+                        - MYSQLDATA_PASSWORD=${MYSQLDATA_PASSWORD}
+                        - MARIADBDATA_DATABASE=${MARIADBDATA_DATABASE}
+                        - MARIADBDATA_HOST=${MARIADBDATA_HOST}
+                        - MARIADBDATA_USER=${MARIADBDATA_USER}
+                        - MARIADBDATA_PASSWORD=${MARIADBDATA_PASSWORD}
+                        - POSTGRESDATA_DATABASE=${POSTGRESDATA_DATABASE}
+                        - POSTGRESDATA_HOST=${POSTGRESDATA_HOST}
+                        - POSTGRESDATA_USER=${POSTGRESDATA_USER}
+                        - POSTGRESDATA_PASSWORD=${POSTGRESDATA_PASSWORD}
+                        - ROCK_HOSTS=${ROCK_HOSTS}
+
+                labels:
+                        - "traefik.enable=true"                                    # Enable Traefik for this container
+                        - "traefik.http.routers.opal.rule=Host(`${IP_DOMAIN}`)"  # Route traffic for this domain
+                        - "traefik.http.routers.opal.entrypoints=websecure"
+                        - "traefik.http.routers.opal.tls=true"
+                volumes:
+                        - ./target/test-opal:/srv
+        mongo:
+                image: mongo:6.0
+                container_name: mongo
+                environment:
+                        - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+                        - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+        mysqldata:
+                image: mysql
+                container_name: mysql
+                environment:
+                        - MYSQL_DATABASE=${MYSQL_DATABASE}
+                        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+                        - MYSQL_USER=${MYSQL_USER}
+                        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        mariadbdata:
+                image: mariadb
+                container_name: mariadb
+                environment:
+                        - MYSQL_DATABASE=${MYSQL_DATABASE}
+                        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+                        - MYSQL_USER=${MYSQL_USER}
+                        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+        postgresdata:
+                image: postgres
+                container_name: postgres
+                environment:
+                        - POSTGRES_DB=${POSTGRES_DB}
+                        - POSTGRES_USER=${POSTGRES_USER}
+                        - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+        rock:
+                image:  datashield/rock-base:latest
+                container_name: rock
+
+               
+      
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
