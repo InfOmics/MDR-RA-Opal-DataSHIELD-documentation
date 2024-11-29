@@ -60,3 +60,11 @@ Other Authentication Options:
 | **Key Pair in PEM Format**          | Login using a key pair (public and private key) in PEM format.                | - Key Pair |
 
 ## 3 Docker Compose
+The `docker-compose.yml` file pulls the following images from Docker Hub (https://hub.docker.com/):
+- `traefik:v2.10` (container name: `traefik`): Traefik is a modern HTTP reverse proxy and ingress controller that makes deploying microservices easy (https://hub.docker.com/_/traefik). 
+- `obiba/opal:5.0.0-RC4` (container name: `opal`): Opal is OBiBa's core data managment application (https://hub.docker.com/r/obiba/opal). 
+- `mongo:6.0` (container name: `mongo`): MongoDB document databases provide high availability and easy scalability (https://hub.docker.com/_/mongo).
+- `mysql` (container name: `mysql`): MySQL is a widely used, open-source relational database management system (RDBMS) (https://hub.docker.com/_/mysql). 
+- `mariadb` (container name: `mariadb`): MariaDB Server is a high performing open source relational database, forked from MySQL (https://hub.docker.com/_/mariadb).
+- `postgres` (container name: `postgres`): The PostgreSQL object-relational database system provides reliability and data integrity (https://hub.docker.com/_/postgres).
+- `datashield/rock-base:latest` (container name: `rock`): OBiBa/Rock R server with dsBase setup (https://hub.docker.com/r/datashield/rock-base).
