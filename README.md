@@ -5,7 +5,7 @@
     <img src="docs/imgs/mdr-ra.png" alt="mdr-ra.png" width=400 />
 </p>
 
-# Opal-DataSHIELD ecosystem deployment and usage for the MDR-RA project
+# Opal-DataSHIELD ecosystem deployment and usage for the MDR-RA project - External partners server setup
 
 ## Synopsis
 The purpose of this document is to describe the deployment process, configuration, 
@@ -13,7 +13,16 @@ initiation, and usage of the OBiBa Opal-DataSHIELD ecosystem required by the MDR
 project. To ensure portability and reproducibility the deployment employs [Docker](https://www.docker.com/). 
 Docker supports container-based deployment enhancing the ecosystem's portability.
 
-For detailed documentation regarding the OBiBa Opal and DataSHIELD systems, including their specific features and configurations options, please refer to [Document](docs/AdvancedTopics.md).
+The Opal-DataSHIELD architecture is a federated system in which a client communicates 
+with multiple Opal servers to enable secure analysis of sensitive or distributed data. 
+This architecture supports privacy-preserving data analysis by ensuring that individual-level 
+data never leaves its source location. Instead, only aggregate or non-disclosive information 
+is exchanged between the servers and the client as depicted in the figure below. 
+For detailed documentation regarding the OBiBa Opal and DataSHIELD systems, including their specific features and configuration options, please refer to [Document](docs/AdvancedTopics.md).
+
+<p align="center">
+    <img src="docs/imgs/Opal_DataSHIELD_architecture.png" alt="architecture.png" width=600 />
+</p>
 
 ## Table of contents 
 
@@ -41,8 +50,9 @@ For detailed documentation regarding the OBiBa Opal and DataSHIELD systems, incl
 <br>&nbsp;&nbsp;3.5 [Manage Folders and Files](#35-manage-folders-and-files)
 <br>&nbsp;&nbsp;3.6 [Create and Manage Projects](#36-create-and-manage-projects)
 <br>&nbsp;&nbsp;3.7 [Quick DataSHIELD Client Test](#37-quick-datashield-client-test)
-<br>4 - [Support](#4-support)
-<br>5 - [Credits](#5-credits)
+<br>4 - [System security management](#4-security)
+<br>5 - [Support](#5-support)
+<br>6 - [Credits](#6-credits)
 
 ## 0 Quick Deployment
 
@@ -752,7 +762,7 @@ and related configurations. Follow these steps to create and populate projects:
 **NOTE-3**: Ensure the data file is clean and formatted correctly to avoid 
 issues during import.
   
-### 3.7 Quick DataSHIELD Client Test
+### 3.7 Basic DataSHIELD Client Authentication and Data Access
 
 To verify the functionality of the DataSHIELD client, follow these steps to 
 connect to your Opal server and retrieve basic data statistics, open R and run:
@@ -792,9 +802,16 @@ ds.colnames(x = 'Example')
 DSI::datashield.logout(connections)
 ```
 
-## 4 Support
+## 4 System security management
+The security of the project is tested and maintained by our partner Pluribus One: https://www.pluribus-one.it/. 
 
-For support, please contact contact: 
+For support, please contact:
+* **Referents:** 
+    - **Fabio Roli:** fabio.roli@pluribus-one.it
+
+## 5 Support
+
+For support, please contact: 
 
 * **Email:** mdrra.univr.team@ateneo.univr.it
 <br>For any issues, questions, or further assistance, reach out to our dedicated support team via email
@@ -803,7 +820,7 @@ For support, please contact contact:
   - **Rosalba Giugno:** Principal Investigator
   - **Manuel Tognon:** Post-Doctoral Researcher
 
-## 5 Credits
+## 6 Credits
 
 - **Project Lead**: 
   - Prof. Rosalba Giugno <rosalba.giugno@univr.it>
