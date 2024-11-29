@@ -9,15 +9,30 @@
 
 ## Table of Contents
 
-1 [OBiBa Opal System](#1-obiba-opal-system)
-<br>&nbsp; 1.1 [Authentication](#11-authentication)
+1 [Opal-DataSHIELD architecture components](#1-opal-datashield-system)
+<br>2 [OBiBa Opal System](#1-obiba-opal-system)
+<br>&nbsp; 2.1 [Authentication](#12-authentication)
 <br>3 [Docker Compose](#3-docker-compose)
 
+## 1 Opal-DataSHIELD architecture components
 
-## 1 OBiBa Opal System
+1.  **Client-Side Components**
+    -  DataSHIELD Client: Implemented in an R or Python environment. It provides users with tools to initiate secure computations on remote datasets.
+    - Commands and Scripts: Users interact with the DataSHIELD client through functions designed to execute statistical or analytical tasks without directly exposing raw data.
+2. **Server-Side Components**
+    - Opal Server: The Opal server acts as the primary repository and computation node at each partner site holding data.
+    - Functionalities: It stores sensitive datasets in a secure and controlled environment and executes commands sent by the client ensuring compliance with privacy rules.
+    - DataSHIELD R Server: Installed on each Opal server, this package interprets client commands and ensures computations are compliant with data protection policies.
+3. **Federated Computation**
+    - Each server independently processes client requests on its local data.
+    - Results from all partner servers are aggregated at the client side, ensuring no individual-level data is disclosed during the process.
+4. **Security and Privacy Measures**
+    - Non-Disclosure Compliance: Commands that might reveal individual data are blocked by the server.
+    - Audit Trails: Both client and server interactions are logged for transparency and compliance.
+    - Authentication and Authorization: Secure login and access controls restrict users interaction with the servers.
 
-
-### 1.1 Authentication
+## 2 OBiBa Opal System
+### 2.1 Authentication
 
 In the OBiBa Opal-DataSHIELD ecosystem, users can authenticate by providing their *username* and *password* credentials to gain access to resources. Authentication ensures secure access and protects data integrity by verifying the identity of each user.
 
