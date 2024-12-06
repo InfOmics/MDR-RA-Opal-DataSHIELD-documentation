@@ -99,7 +99,7 @@ services:
                         - POSTGRES_USER=${POSTGRES_USER}
                         - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
         rock:
-                image:  datashield/rock-base:latest
+                image:  infomics/rock-omics2:latest
                 container_name: rock
 
                
