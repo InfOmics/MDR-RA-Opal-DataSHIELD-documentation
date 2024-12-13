@@ -75,6 +75,8 @@ services:
                 environment:
                         - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
                         - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+                volumes:
+                        - ./db/mongo:/data/db
         mysqldata:
                 image: mysql
                 container_name: mysql
@@ -83,14 +85,9 @@ services:
                         - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
                         - MYSQL_USER=${MYSQL_USER}
                         - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-        mariadbdata:
-                image: mariadb
-                container_name: mariadb
-                environment:
-                        - MYSQL_DATABASE=${MYSQL_DATABASE}
-                        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-                        - MYSQL_USER=${MYSQL_USER}
-                        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+                volumes:
+                        - ./db/mysql:/var/lib/mysql
+
         postgresdata:
                 image: postgres
                 container_name: postgres
@@ -98,6 +95,8 @@ services:
                         - POSTGRES_DB=${POSTGRES_DB}
                         - POSTGRES_USER=${POSTGRES_USER}
                         - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+                volumes:
+                        - ./db/postgres:/var/lib/postgresql/data
         rock:
                 image:  infomics/rock-omics2:latest
                 container_name: rock
