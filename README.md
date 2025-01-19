@@ -815,13 +815,17 @@ The security of the Opal-DataSHIELD ecosystem used in the context of the MDR-RA
 project is tested and maintained by the project partner, 
 [Pluribus One](https://www.pluribus-one.it/), a provider of advanced cybersecurity 
 solutions. Their expertise ensures that our systems remain robust and resilient 
-against potential threats.
+against potential threats. Security tests will be conducted on an external third-party 
+server to guarantee the integrity of the organization/institution's infrastructure. 
 
 For support or security-related inquiries, please feel free to reach out to the 
 dedicated referents:
 
-- Fabio Roli
-    <br>Email: fabio.roli@pluribus-one.it
+- Luca Piras
+- Valentina Del Rio
+- Guido Mureddu
+
+* **Email:** pluribus-one.mdr-ra@pluribus-one.it 
 
 Pluribus One is committed to upholding the highest standards of security, and we 
 encourage you to contact them for any concerns or assistance.
