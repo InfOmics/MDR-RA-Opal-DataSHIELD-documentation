@@ -177,7 +177,7 @@ the images:
 
     - More Information: [Opal on Docker Hub](https://hub.docker.com/r/obiba/opal)
 
-3. `mongo:6.0.20` (container name: `mongo`)
+3. `mongo:8.0.4` (container name: `mongo`)
     - **Role**: NoSQL database.
 
     - **Description**: MongoDB is a document-oriented database that provides high 
