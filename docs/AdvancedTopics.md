@@ -150,7 +150,7 @@ The docker-compose.yml file pulls the following images from [Docker Hub](https:/
 each serving a specific role within the ecosystem. Below is a detailed overview of 
 the images:
 
-1. `traefik:v2.10` (container name: `traefik`)
+1. `traefik:v3.3.2` (container name: `traefik`)
     
     - **Role**: HTTP reverse proxy and ingress controller.
     
@@ -164,7 +164,7 @@ the images:
 
     - **More Information**: [Traefik on Docker Hub](https://hub.docker.com/_/traefik)
 
-2. `obiba/opal:5.0.0-RC4 `(container name: `opal`)
+2. `obiba/opal:5.0.3-RC4`(container name: `opal`)
 
     - **Role**: Core data management application.
 
@@ -177,7 +177,7 @@ the images:
 
     - More Information: [Opal on Docker Hub](https://hub.docker.com/r/obiba/opal)
 
-3. `mongo:6.0` (container name: `mongo`)
+3. `mongo:8.0.4` (container name: `mongo`)
     - **Role**: NoSQL database.
 
     - **Description**: MongoDB is a document-oriented database that provides high 
