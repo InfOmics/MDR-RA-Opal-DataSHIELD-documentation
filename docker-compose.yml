@@ -70,7 +70,7 @@ services:
                 volumes:
                         - ./target/test-opal:/srv
         mongo:
-                image: mongo
+                image: mongo:8.0.4
                 container_name: mongo
                 environment:
                         - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
@@ -78,7 +78,7 @@ services:
                 volumes:
                         - ./db/mongo:/data/db
         mysqldata:
-                image: mysql
+                image: mysql:9.1.0
                 container_name: mysql
                 environment:
                         - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -89,7 +89,7 @@ services:
                         - ./db/mysql:/var/lib/mysql
 
         postgresdata:
-                image: postgres
+                image: postgres:17.2
                 container_name: postgres
                 environment:
                         - POSTGRES_DB=${POSTGRES_DB}
