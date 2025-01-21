@@ -1,6 +1,6 @@
 services:
         reverse-proxy:
-                image: traefik:v2.10
+                image: traefik:v3.3.2
                 container_name: traefik
                 restart: always
                 ports:
@@ -32,7 +32,7 @@ services:
                         - "--providers.file.watch=true"
 
         opal:
-                image: obiba/opal:5.0.0-RC4
+                image: obiba/opal:5.0.3
                 container_name: opal
                 expose:
                         - ${OPAL_PORT}
@@ -70,7 +70,7 @@ services:
                 volumes:
                         - ./target/test-opal:/srv
         mongo:
-                image: mongo:6.0
+                image: mongo
                 container_name: mongo
                 environment:
                         - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
