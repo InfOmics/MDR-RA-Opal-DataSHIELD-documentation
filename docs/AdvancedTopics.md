@@ -164,7 +164,7 @@ the images:
 
     - **More Information**: [Traefik on Docker Hub](https://hub.docker.com/_/traefik)
 
-2. `obiba/opal:5.0.3-RC4`(container name: `opal`)
+2. `obiba/opal:5.0.3`(container name: `opal`)
 
     - **Role**: Core data management application.
 
@@ -189,7 +189,7 @@ the images:
 
     - **More Information**: [MongoDB on Docker Hub](https://hub.docker.com/_/mongo)
 
-4. `mysql` (container name: `mysql`)
+4. `mysql:9.1.0` (container name: `mysql`)
 
     - **Role**: Relational database management system (RDBMS).
 
@@ -201,20 +201,7 @@ the images:
 
     - **More Information**: [MySQL on Docker Hub](https://hub.docker.com/_/mysql)
 
-5. `mariadb` (container name: `mariadb`)
-
-    - **Role**: Relational database management system (RDBMS).
-
-    - **Description**: MariaDB is a community-developed fork of MySQL, offering 
-    enhanced performance, security, and additional features while maintaining 
-    compatibility.
-
-    - **Use in Ecosystem**: Alternative to MySQL for projects requiring 
-    open-source database support.
-
-    - **More Information**: [MariaDB on Docker Hub](https://hub.docker.com/_/mariadb)
-
-6. `postgres` (container name: `postgres`)
+5. `postgres:17.2` (container name: `postgres`)
 
     - **Role**: Object-relational database system.
 
