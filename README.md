@@ -58,8 +58,9 @@ For detailed documentation, refer to the appropriate sections of this
 <br>&nbsp;&nbsp;3.6 [Create and Manage Projects](#36-create-and-manage-projects)
 <br>&nbsp;&nbsp;3.7 [Basic DataSHIELD Client Authentication and Data Access](#37-basic-datashield-client-authentication-and-data-access)
 <br>4 - [System Security Management](#4-system-security-management)
-<br>5 - [Support](#5-support)
-<br>6 - [Credits](#6-credits)
+<br>5 - [System Software Release Tracking and Update Management](#5-system-software-release-tracking-and-update-management)
+<br>6 - [Support](#6-support)
+<br>7 - [Credits](#7-credits)
 
 ## 0 Quick Deployment
 
@@ -811,26 +812,29 @@ DSI::datashield.logout(connections)
 
 ## 4 System Security Management
 
-The security of the Opal-DataSHIELD ecosystem used in the context of the MDR-RA 
-project is tested and maintained by the project partner, 
+The security of the Opal-DataSHIELD ecosystem utilized in the MDR-RA project is rigorously tested and maintained by our project partner,
 [Pluribus One](https://www.pluribus-one.it/), a provider of advanced cybersecurity 
-solutions. Their expertise ensures that our systems remain robust and resilient 
-against potential threats. Security tests will be conducted on an external third-party 
-server to guarantee the integrity of the organization/institution's infrastructure. 
+solutions. Leveraging their expertise, Pluribus One ensures our systems remain robust, resilient, and protected against potential threats. To guarantee the integrity of organizational infrastructure, security tests will be conducted on an external third-party server.
 
-For support or security-related inquiries, please feel free to reach out to the 
-dedicated referents:
+For support or security-related inquiries, please contact the dedicated team:
 
 - Luca Piras
 - Valentina Del Rio
 - Guido Mureddu
 
-* **Email:** pluribus-one.mdr-ra@pluribus-one.it 
+* **Email:** <pluribus-one.mdr-ra@pluribus-one.it>
 
-Pluribus One is committed to upholding the highest standards of security, and we 
-encourage you to contact them for any concerns or assistance.
+Pluribus One is committed to maintaining the highest security standards and welcomes your concerns or questions. Please do not hesitate to reach out for assistance.
 
-## 5 Support
+## 5 System Software Release Tracking and Update Management
+
+To ensure effective tracking of new software releases, we will actively monitor public repositories and provide partners with timely updates. Each new release will undergo validation in a controlled environment to confirm compatibility, stability, and adherence to the required security standards.
+
+A centralized log will document release details, including dates, version numbers, key changes, and certifications for deployment within partners' environments. This log will serve as a reliable reference for tracking approved versions.
+
+Our approach prioritizes security, stability, and efficiency to maintain a seamless update process. Partners will be promptly notified of updates, particularly when a release includes critical security or stability patches or introduces features essential to the project's goals.
+
+## 6 Support
 
 For support, please contact: 
 
@@ -841,9 +845,9 @@ For support, please contact:
   - **Rosalba Giugno:** Principal Investigator
   - **Manuel Tognon:** Post-Doctoral Researcher
 
-## 6 Credits
+## 7 Credits
 
-- **Project Lead**: 
+- **Project Leader**: 
   - Prof. Rosalba Giugno <rosalba.giugno@univr.it>
 
 - **Development Team**:  
