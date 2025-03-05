@@ -8,7 +8,7 @@ library('DSOpal')
 library(tibble)
 data("iris")
 
-url="https://hpcb-mmusculus.di.univr.it"
+url="https://your-domain.com"
 user_name='administrator'
 password= 'administrator'
 
@@ -19,6 +19,7 @@ connections <- opal.login(user_name,password, url=url)
 upload_table_iris = function(connections,data, table_name, project_name, users){
   data         <- as_tibble(data, rownames = '_row_id_')
   opal.table_save(connections, data, project = project_name, table =table_name, id.name = "_row_id_", force = TRUE)
+  #give permission to perform analysis
   opal.table_perm_add(connections, project_name, table_name, subject = users, type = "group", permission = "view")
 }
 

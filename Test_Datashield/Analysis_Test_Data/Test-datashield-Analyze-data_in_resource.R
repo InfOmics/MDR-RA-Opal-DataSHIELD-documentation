@@ -6,7 +6,7 @@ library(dsBaseClient)
 library('DSOpal')
 library(opalr)
 
-url1="https://hpcb-mmusculus.di.univr.it"
+url1="https://your-domain.com"
 user_name1='user-test'
 password1= 'P@ssw0rd'
 
