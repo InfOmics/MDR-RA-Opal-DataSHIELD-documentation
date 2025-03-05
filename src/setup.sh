@@ -38,12 +38,27 @@ fi
 
 
 #pull
+
 echo "Pulling the latest images..."
-docker compose -f docker-compose.yml --env-file MDR_RA.env pull
+error_msg=$(docker compose -f docker-compose.yml --env-file MDR_RA.env pull 2>&1)
+
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to pull the latest images."
+    echo "Details: $error_msg"
+    exit 1
+fi
 
 #up
 echo "Starting the server..."
-docker compose -f docker-compose.yml --env-file MDR_RA.env up -d
+
+echo "Starting Docker Compose services..."
+error_msg=$(docker compose -f docker-compose.yml --env-file MDR_RA.env up -d 2>&1)
+
+if [ $? -ne 0 ]; then
+    echo "Error: Failed to start services."
+    echo "Details: $error_msg"
+    exit 1
+fi
 
 
 if [ ! -d ./files_to_upload ];
