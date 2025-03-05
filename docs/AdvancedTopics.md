@@ -19,6 +19,10 @@
 <br>&nbsp;&nbsp;2.1 [Authentication](#12-authentication)
 <br>3 [Docker Compose](#3-docker-compose)
 <br>&nbsp;&nbsp;3.1 [Pulled Images](#31-pulled-images)
+<br>4 [DataSHIELD Test Simulation](#4-datashield-test-simulation)
+<br>&nbsp;&nbsp;4.1 [User Creation](#41-user-creation)
+<br>&nbsp;&nbsp;4.2 [Data Upload](#41-data-upload)
+<br>&nbsp;&nbsp;4.3 [Data Analysis](#41-data-analysis)
 
 ## 1 OBiBa Opal-DataSHIELD Ecosystem Overview
 
@@ -226,4 +230,37 @@ the images:
     sensitive data within the federated Opal-DataSHIELD architecture.
 
     - **More Information**: [ROCK Base on Docker Hub](https://hub.docker.com/r/datashield/rock-base)
+
+## 4 DataSHIELD Test Simulation
+In the ```Test_Datashield``` folder you can find R scripts and data to run a DataSHIELD test simulation.<br>
+**NOTE:** in all scripts the URL string must be substituted with your domain, same as in the ```MDR_RA.env``` file.
+
+### 4.1 User Creation (Administrator-Only Task)
+The ```Create_User_Datashield/users.R``` script can be executed by the system administrator to create a new
+user dedicated to data analysis. The password must be generated according to the following requirements:
+- at least 8 characters long;
+- one digit;
+- one uppercase letter;
+- one lowercase letter;
+- one special character (e.g., @#$%^&+=!);
+- no white space. 
+
+
+### 4.2 Data Upload (Administrator-Only Task)
+The ```Load_Test_Data/Test-datashield-load-data_as_resource.R``` script can be executed by the system administrator to 
+upload data to the server as a resource. This is particularly useful when data can not be stored in a table format. 
+In this simulation, the data uploaded as a resource can be found in the ```Data``` folder.  
+
+The ```Load_Test_Data/Test-datashield-load-data_as_table.R``` script can be executed by the system administrator to 
+upload data to the server as a table.  
+
+
+### 4.3 Data Analysis
+The ```Load_Test_Data/Test-datashield-Analyze-data_in_resource.R``` script can be executed by authorized users to 
+run an analysis on a resource. 
+
+The ```Test-datashield-Analyze-data_in_table.R``` script can be executed by authorized users to 
+run an analysis on a table.      
+
+    
 
