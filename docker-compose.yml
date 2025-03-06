@@ -37,10 +37,9 @@ services:
                 expose:
                         - ${OPAL_PORT}
                 links:
-                        - mongo
-                        - mysqldata
-                        - mariadbdata
                         - postgresdata
+                        - mysqldata
+                        
                         - rock
                 environment:
                         - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMINISTRATOR_PASSWORD}
@@ -69,14 +68,15 @@ services:
                         - "traefik.http.routers.opal.tls=true"
                 volumes:
                         - ./target/test-opal:/srv
-        mongo:
-                image: mongo:8.0.4
-                container_name: mongo
+        postgresdata:
+                image: postgres:17.2
+                container_name: postgres
                 environment:
-                        - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-                        - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+                        - POSTGRES_DB=${POSTGRES_DB}
+                        - POSTGRES_USER=${POSTGRES_USER}
+                        - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
                 volumes:
-                        - ./db/mongo:/data/db
+                        - ./db/postgres:/var/lib/postgresql/data
         mysqldata:
                 image: mysql:9.1.0
                 container_name: mysql
@@ -88,15 +88,7 @@ services:
                 volumes:
                         - ./db/mysql:/var/lib/mysql
 
-        postgresdata:
-                image: postgres:17.2
-                container_name: postgres
-                environment:
-                        - POSTGRES_DB=${POSTGRES_DB}
-                        - POSTGRES_USER=${POSTGRES_USER}
-                        - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-                volumes:
-                        - ./db/postgres:/var/lib/postgresql/data
+
         rock:
                 image:  infomics/rock-omics2:latest
                 container_name: rock
