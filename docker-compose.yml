@@ -39,6 +39,7 @@ services:
                 links:
                         - postgresdata
                         - mysqldata                       
+                        - mysqldata
                         - rock
                 environment:
                         - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMINISTRATOR_PASSWORD}
