@@ -12,7 +12,7 @@ fi
 if command -v docker >/dev/null 2>&1;  # This redirects both standard output and standard error to /dev/null
 then
     echo "Docker is installed"
-    service docker start
+    docker --version
 else
     echo "Docker not installed on this system. Aborting"
     exit 1
@@ -37,29 +37,44 @@ if [[ ! -d ./certs || -z `ls ./certs` ]]; then
 fi
 
 
-#pull
+#check IP domain 
+if [ "$ip" != "yourDomain" ];
+then
+    echo "ip or domain set correctly."
+else
+    echo "Error: ip or domain not correctly set. Check .env file. Aborting"
+    exit 1
+fi
 
+
+#pull
 echo "Pulling the latest images..."
-error_msg=$(docker compose -f docker-compose.yml --env-file MDR_RA.env pull 2>&1)
+output=$(docker compose -f docker-compose.yml --env-file MDR_RA.env pull 2>&1)
 
 if [ $? -ne 0 ]; then
     echo "Error: Failed to pull the latest images."
-    echo "Details: $error_msg"
+    echo "Details: $output"
     exit 1
+else
+    echo "Success: Pulled the latest images."
+    #echo "$output"
 fi
+echo "**************************************"
 
-#up
+# Up
 echo "Starting the server..."
 
 echo "Starting Docker Compose services..."
-error_msg=$(docker compose -f docker-compose.yml --env-file MDR_RA.env up -d 2>&1)
+output=$(docker compose -f docker-compose.yml --env-file MDR_RA.env up -d 2>&1)
 
 if [ $? -ne 0 ]; then
     echo "Error: Failed to start services."
-    echo "Details: $error_msg"
+    echo "Details: $output"
     exit 1
+else
+    echo "Success: Services started successfully."
+    echo "$output"
 fi
-
 
 if [ ! -d ./files_to_upload ];
 then 
