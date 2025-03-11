@@ -32,14 +32,12 @@ services:
                         - "--providers.file.watch=true"
 
         opal:
-                image: obiba/opal:5.0.3
+                image: obiba/opal:5.1.2
                 container_name: opal
                 expose:
                         - ${OPAL_PORT}
                 links:
                         - postgresdata
-                        - mysqldata                       
-                        - mysqldata
                         - rock
                 environment:
                         - OPAL_ADMINISTRATOR_PASSWORD=${OPAL_ADMINISTRATOR_PASSWORD}
@@ -48,10 +46,6 @@ services:
                         - POSTGRESDATA_USER=${POSTGRESDATA_USER}
                         - POSTGRESDATA_PASSWORD=${POSTGRESDATA_PASSWORD}
                         - ROCK_HOSTS=${ROCK_HOSTS}
-                        - MYSQLDATA_DATABASE=${MYSQLDATA_DATABASE}
-                        - MYSQLDATA_HOST=${MYSQLDATA_HOST}
-                        - MYSQLDATA_USER=${MYSQLDATA_USER}
-                        - MYSQLDATA_PASSWORD=${MYSQLDATA_PASSWORD}
 
                 labels:
                         - "traefik.enable=true"                                    # Enable Traefik for this container
@@ -60,6 +54,7 @@ services:
                         - "traefik.http.routers.opal.tls=true"
                 volumes:
                         - ./target/test-opal:/srv
+
         postgresdata:
                 image: postgres:17.2
                 container_name: postgres
@@ -69,32 +64,7 @@ services:
                         - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
                 volumes:
                         - ./db/postgres:/var/lib/postgresql/data
-        mysqldata:
-                image: mysql:9.1.0
-                container_name: mysql
-                environment:
-                        - MYSQL_DATABASE=${MYSQL_DATABASE}
-                        - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-                        - MYSQL_USER=${MYSQL_USER}
-                        - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-                volumes:
-                        - ./db/mysql:/var/lib/mysql
-
 
         rock:
                 image:  infomics/rock-omics2:latest
                 container_name: rock
-
-               
-      
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
