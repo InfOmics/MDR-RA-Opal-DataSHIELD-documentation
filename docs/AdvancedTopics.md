@@ -234,10 +234,10 @@ the images:
 ## 4 DataSHIELD Test Simulation
 In the ```Test_Datashield``` folder, you can find R scripts and data to run a DataSHIELD test simulation.<br>
 **NOTE:** The following system-level dependencies are required:
-- openssl-devel
-- curl-devel
-- libxml2-devel
-- cmake
+- `openssl-devel`
+- `curl-devel`
+- `libxml2-devel`
+- `cmake`
   
 **NOTE:** In all scripts, the URL string must be replaced with your domain, as in the ```MDR_RA.env``` file.
 
