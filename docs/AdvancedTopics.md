@@ -233,8 +233,7 @@ the images:
 
 ## 4 DataSHIELD Test Simulation
 In the ```Test_Datashield``` folder, you can find R scripts and data to run a DataSHIELD test simulation.<br>
-The R scripts can run on a PC, workstation, or server inside or outside your institution's network if the Opal-DataSHIELD server is externally accessible via https://your-domain, directed to port 443.
-If the server is only accessible within your institution's network, the scripts must be run locally using https://your-domain or https://your-IP:443.
+The R scripts can run on a PC, workstation, or server inside or outside your institution's network if the Opal-DataSHIELD server is externally accessible via https://your-domain or https://your-IP:443.
 To check if your Opal-DataSHIELD server is running and accessible, open https://your-domain in a browser.
 
 **NOTE:** The following system-level dependencies are required and can be installed on Linux (e.g., Ubuntu Server) using ```sudo apt-get```:
