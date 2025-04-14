@@ -32,7 +32,7 @@ datashield.resources(connections)
 
 project_name = 'TestDatashield'
 
-table_name= "DataShield_TestGex_reduced_datasize"
+table_name= "DataShield_TestGex_10_rows"
 
 project_table_name = paste(project_name, table_name, sep = ".")
 
