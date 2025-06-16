@@ -168,7 +168,7 @@ the images:
 
     - **More Information**: [Traefik on Docker Hub](https://hub.docker.com/_/traefik)
 
-2. `obiba/opal:5.0.3`(container name: `opal`)
+2. `obiba/opal:5.1.3`(container name: `opal`)
 
     - **Role**: Core data management application.
 
