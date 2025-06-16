@@ -732,7 +732,7 @@ folders and uploading files. Follow the steps below:
     - Select the file from your local machine and confirm the upload.
 
 **NOTE-2**: Ensure the uploaded file is in a compatible tabular format for 
-proper processing.
+proper processing. 
   
 ### 3.6 Create and Manage Projects
 
@@ -760,15 +760,19 @@ and related configurations. Follow these steps to create and populate projects:
 
     - Click the **IMPORT** button and choose Import from file.
 
-    - Select the desired **data format** (e.g., CSV, Excel) and proceed.
+    - Select the desired **data format** (e.g., CSV) and proceed.
 
     - Click **Select**, navigate to the file's location in the system, and 
     upload it.
 
     - Follow the prompts to configure and finalize the import process.
 
-**NOTE-3**: Ensure the data file is clean and formatted correctly to avoid 
-issues during import.
+**NOTE-3**: The web interface currently supports input files in `.csv` format 
+or `.rds` files formatted as a tibble, with a maximum size of 100 MB. 
+These files are automatically loaded into a table (view). 
+The same functionality is available through the script 
+`Load_Test_Data/Test-datashield-load-data_as_table.R`. To work with other file formats, 
+data must be uploaded as a resource using the script `Load_Test_Data/Test-datashield-load-data_as_resource.R`. 
   
 ### 3.7 Basic DataSHIELD Client Authentication and Data Access
 
@@ -856,7 +860,7 @@ For support, please contact:
 
 - **Documentation**:  
   - Manuel Tognon, PhD <manuel.tognon@univr.it>
-  - Eva Viesi <eva.viesi@univr.it>
+  - Eva Viesi, PhD <eva.viesi@univr.it>
 
 <br><hr>
 [Back to top](#opal-datashield-ecosystem-deployment-and-usage-for-the-mdr-ra-project)
