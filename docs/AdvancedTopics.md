@@ -232,7 +232,7 @@ the images:
     - **More Information**: [ROCK Base on Docker Hub](https://hub.docker.com/r/datashield/rock-base)
 
 ## 4 DataSHIELD Test Simulation
-In the ```Test_Datashield``` folder, you can find R scripts and data to run a DataSHIELD test simulation.<br>
+To run the test, you first need to download and install [R](https://cran.r-project.org). Once it is installed, you can find R scripts and data to run a DataSHIELD test simulation in the ```Test_Datashield``` folder.<br>
 The R scripts can run on a PC, workstation, or server inside or outside your institution's network if the Opal-DataSHIELD server is externally accessible via https://your-domain or https://your-IP:443.
 To check if your Opal-DataSHIELD server is running and accessible, open https://your-domain in a browser.
 
