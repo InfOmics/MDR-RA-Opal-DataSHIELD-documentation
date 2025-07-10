@@ -15,14 +15,15 @@
 <br>&nbsp;&nbsp;1.3 [Federated Computation](#13-federated-computation)
 <br>&nbsp;&nbsp;1.4 [Security and Privacy Measures](#14-security-and-privacy-measures)
 <br>&nbsp;&nbsp;1.5 [Advantages of the Ecosystem](#15-advantages-of-the-ecosystem)
-<br>2 [OBiBa Opal System](#1-obiba-opal-system)
-<br>&nbsp;&nbsp;2.1 [Authentication](#12-authentication)
+<br>2 [OBiBa Opal System](#2-obiba-opal-system)
+<br>&nbsp;&nbsp;2.1 [Authentication](#21-authentication)
 <br>3 [Docker Compose](#3-docker-compose)
 <br>&nbsp;&nbsp;3.1 [Pulled Images](#31-pulled-images)
 <br>4 [DataSHIELD Test Simulation](#4-datashield-test-simulation)
+<br>&nbsp;&nbsp;4.0 [R Packages Installation](#40-packages-installation)
 <br>&nbsp;&nbsp;4.1 [User Creation](#41-user-creation)
-<br>&nbsp;&nbsp;4.2 [Data Upload](#41-data-upload)
-<br>&nbsp;&nbsp;4.3 [Data Analysis](#41-data-analysis)
+<br>&nbsp;&nbsp;4.2 [Data Upload](#42-data-upload)
+<br>&nbsp;&nbsp;4.3 [Data Analysis](#43-data-analysis)
 
 ## 1 OBiBa Opal-DataSHIELD Ecosystem Overview
 
@@ -243,6 +244,9 @@ To check if your Opal-DataSHIELD server is running and accessible, open https://
 - `cmake`
   
 **NOTE:** In all scripts, the URL string must be replaced with your domain, as in the ```MDR_RA.env``` file.
+
+### 4.0 R Packages Installation (Administrator-Only Task)
+The ```install_packages.R``` script must be executed by the system administrator to install the required R packages needed for subsequent testing.
 
 ### 4.1 User Creation (Administrator-Only Task)
 The ```Create_User_Datashield/users.R``` script can be executed by the system administrator to create a new
