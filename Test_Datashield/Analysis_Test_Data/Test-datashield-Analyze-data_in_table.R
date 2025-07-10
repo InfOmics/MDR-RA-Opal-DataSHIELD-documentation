@@ -1,6 +1,6 @@
 
-install.packages('dsBaseClient', repos=c(getOption('repos'), 'https://cran.obiba.org'))
-install.packages('DSOpal')
+# install.packages('dsBaseClient', repos=c(getOption('repos'), 'https://cran.obiba.org'))
+# install.packages('DSOpal')
 
 # Load DataSHIELD base package
 library(dsBaseClient)
