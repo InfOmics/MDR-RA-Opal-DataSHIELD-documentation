@@ -34,6 +34,7 @@ services:
         opal:
                 image: obiba/opal:5.1.3
                 container_name: opal
+                restart: always
                 expose:
                         - ${OPAL_PORT}
                 links:
@@ -58,6 +59,7 @@ services:
         postgresdata:
                 image: postgres:17.2
                 container_name: postgres
+                restart: always
                 environment:
                         - POSTGRES_DB=${POSTGRES_DB}
                         - POSTGRES_USER=${POSTGRES_USER}
@@ -68,3 +70,4 @@ services:
         rock:
                 image:  infomics/rock-omics2:latest
                 container_name: rock
+                restart: always
