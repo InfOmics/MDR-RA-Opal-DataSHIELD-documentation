@@ -20,7 +20,7 @@
 <br>3 [Docker Compose](#3-docker-compose)
 <br>&nbsp;&nbsp;3.1 [Pulled Images](#31-pulled-images)
 <br>4 [DataSHIELD Test Simulation](#4-datashield-test-simulation)
-<br>&nbsp;&nbsp;4.0 [R Packages Installation](#40-packages-installation)
+<br>&nbsp;&nbsp;4.0 [R Packages Installation](#40-r-packages-installation)
 <br>&nbsp;&nbsp;4.1 [User Creation](#41-user-creation)
 <br>&nbsp;&nbsp;4.2 [Data Upload](#42-data-upload)
 <br>&nbsp;&nbsp;4.3 [Data Analysis](#43-data-analysis)
@@ -245,8 +245,10 @@ To check if your Opal-DataSHIELD server is running and accessible, open https://
   
 **NOTE:** In all scripts, the URL string must be replaced with your domain, as in the ```MDR_RA.env``` file.
 
+
 ### 4.0 R Packages Installation (Administrator-Only Task)
 The ```install_packages.R``` script must be executed by the system administrator to install the required R packages needed for subsequent testing.
+
 
 ### 4.1 User Creation (Administrator-Only Task)
 The ```Create_User_Datashield/users.R``` script can be executed by the system administrator to create a new
