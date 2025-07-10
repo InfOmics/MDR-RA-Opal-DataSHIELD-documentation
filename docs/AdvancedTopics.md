@@ -247,12 +247,12 @@ To check if your Opal-DataSHIELD server is running and accessible, open https://
 
 
 ### 4.0 R Packages Installation 
-(Administrator-Only Task)
+**(Administrator-Only Task)**
 The ```install_packages.R``` script must be executed by the system administrator to install the required R packages needed for subsequent testing.
 
 
 ### 4.1 User Creation 
-(Administrator-Only Task)
+**(Administrator-Only Task)**
 The ```Create_User_Datashield/users.R``` script can be executed by the system administrator to create a new
 user dedicated to data analysis. The password must be generated according to the following requirements:
 - at least 8 characters long;
@@ -264,7 +264,7 @@ user dedicated to data analysis. The password must be generated according to the
 
 
 ### 4.2 Data Upload 
-(Administrator-Only Task)
+**(Administrator-Only Task)**
 The ```Load_Test_Data/Test-datashield-load-data_as_resource.R``` script can be executed by the system administrator to 
 upload data to the server as a resource. This is particularly useful when data can not be stored in a table format. 
 In this simulation, the data uploaded as a resource can be found in the ```Data``` folder.  
