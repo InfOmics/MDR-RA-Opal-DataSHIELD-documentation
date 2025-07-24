@@ -821,8 +821,8 @@ DSI::datashield.logout(connections)
 The security of the Opal-DataSHIELD ecosystem utilized in the MDR-RA project is rigorously tested and maintained by our project partner,
 [Pluribus One](https://www.pluribus-one.it/), a provider of advanced cybersecurity 
 solutions. Leveraging their expertise, Pluribus One ensures our systems remain robust, resilient, and protected against potential threats. 
-To guarantee the integrity of organizational infrastructure, security tests will be conducted on an external third-party server.<br>
-Detailed instructions for the setup of a secure and hardened DataSHIELD deployment are available at this [link](https://github.com/pluribus-one/mdr-ra), managed by Pluribus One.<br>
+To guarantee the integrity of organizational infrastructure, security tests will be conducted on an external third-party server.<br><br>
+Detailed instructions for the setup of a secure and hardened DataSHIELD deployment are available at this [link](https://github.com/pluribus-one/mdr-ra), managed by Pluribus One.<br><br>
 The security of the Opal-DataSHIELD ecosystem utilized in the MDR-RA project, once installed in accordance with the security guidelines [here](https://github.com/pluribus-one/mdr-ra), developed by Pluribus One, is to be considered secure and validated. Throughout the duration of the project, the system as configured by the guidelines and automations provided by Pluribus One will be rigorously and periodically tested in order to protected it against potential threats.
 Any installation that does not comply with the security guidelines provided by Pluribus One will not be considered validated nor secure by Pluribus One.
 Pluribus One shall bear no responsibility for the security of any system that has not been installed and maintained in accordance with its official guidelines.
