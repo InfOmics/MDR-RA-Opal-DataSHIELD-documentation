@@ -469,7 +469,7 @@ match the port and domain name designated for the ecosystem deployment.
 - If you do not already have SSL certificates, you can generate them or purchase 
 them from a trusted certificate authority (CA).
 
-- Once obtained, place the certificates in the `certs/` directory of the cloned 
+- Once obtained, place the certificates (files in unencrypted form) in the `certs/` directory of the cloned 
 repository.
 
     - Ensure that the files are named appropriately and match the configuration 
@@ -817,7 +817,7 @@ DSI::datashield.logout(connections)
 ```
 
 ## 4 System Security Management
-
+DataSHIELD-Opal meets strong security standards, as validated by security audit.<br>
 The security of the Opal-DataSHIELD ecosystem utilized in the MDR-RA project is rigorously tested and maintained by our project partner,
 [Pluribus One](https://www.pluribus-one.it/), a provider of advanced cybersecurity 
 solutions. Leveraging their expertise, Pluribus One ensures our systems remain robust, resilient, and protected against potential threats. 

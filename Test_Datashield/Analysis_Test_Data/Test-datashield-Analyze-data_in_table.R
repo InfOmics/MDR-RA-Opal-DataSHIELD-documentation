@@ -64,7 +64,7 @@ mean.local <- datashield.aggregate(connections, as.symbol(cally))
 mean.local
 
 
-opal.logout(connections)
+datashield.logout(connections)
 rm(connections)
 
 
