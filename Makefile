@@ -21,14 +21,6 @@ up:
 	docker compose --env-file MDR_RA.env up -d
 
 
-create_accounts:
-	@echo "Creation of the accounts..."
-	bash src/create_accounts.sh
-
-update_accounts:
-	@echo "Update of the accounts file..."
-	Rscript src/update_accounts.R
-
 stop:
 	@echo "Stopping the server..."
 	docker compose --env-file MDR_RA.env down

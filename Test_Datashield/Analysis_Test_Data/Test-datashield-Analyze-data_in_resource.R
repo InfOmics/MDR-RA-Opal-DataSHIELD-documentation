@@ -63,6 +63,6 @@ ds.mean(x='D',type='split',datasources = connections[1])
 ds.length(x='D',type='split',datasources = connections[1])
 
 
-opal.logout(connections)
+datashield.logout(connections)
 rm(connections)
 
