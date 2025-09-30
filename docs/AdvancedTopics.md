@@ -233,6 +233,7 @@ the images:
     - **More Information**: [ROCK Base on Docker Hub](https://hub.docker.com/r/datashield/rock-base)
 
 ## 4 DataSHIELD Test Simulation
+The DataSHIELD test simulation consists of three main steps: accessibility through the domain, data loading, and data analysis by using R scripts, as described below. Data loading can be performed either by using R scripts or by following the procedure outlined in this [Section](./README.md#35-manage-folders-and-files), using the example file (```.csv```) located in the ```Test_Datashield/Data``` folder.
 To run the test, you first need to download and install [R](https://cran.r-project.org). Once it is installed, you can find R scripts and data to run a DataSHIELD test simulation in the ```Test_Datashield``` folder.<br>
 The R scripts can run on a PC, workstation, or server inside or outside your institution's network if the Opal-DataSHIELD server is externally accessible via https://your-domain or https://your-IP:443.
 To check if your Opal-DataSHIELD server is running and accessible, open https://your-domain in a browser.

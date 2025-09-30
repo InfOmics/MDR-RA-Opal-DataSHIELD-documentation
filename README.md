@@ -771,7 +771,7 @@ and related configurations. Follow these steps to create and populate projects:
 
 **NOTE-3**: The web interface currently supports input files in `.csv` format 
 or `.rds` files formatted as a tibble, with a maximum size of 100 MB 
-(for files larger than 100 MB, please refer to this [Section](docs/AdvancedTopics.md)). 
+(for files larger than 100 MB, please refer to this [Section](docs/AdvancedTopics.md#4-datashield-test-simulation)). 
 These files are automatically loaded into a table (view). 
 The same functionality is available through the script 
 `Load_Test_Data/Test-datashield-load-data_as_table.R`. To work with other file formats, 
