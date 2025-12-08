@@ -155,7 +155,7 @@ The docker-compose.yml file pulls the following images from [Docker Hub](https:/
 each serving a specific role within the ecosystem. Below is a detailed overview of 
 the images:
 
-1. `traefik:v3.3.2` (container name: `traefik`)
+1. `traefik:v3.6.1` (container name: `traefik`)
     
     - **Role**: HTTP reverse proxy and ingress controller.
     
