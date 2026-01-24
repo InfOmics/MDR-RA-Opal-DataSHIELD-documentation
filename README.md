@@ -775,7 +775,11 @@ or `.rds` files formatted as a tibble, with a maximum size of 100 MB
 These files are automatically loaded into a table (view). 
 The same functionality is available through the script 
 `Load_Test_Data/Test-datashield-load-data_as_table.R`. To work with other file formats, 
-data must be uploaded as a resource using the script `Load_Test_Data/Test-datashield-load-data_as_resource.R`. 
+data must be uploaded as a resource using the script `Load_Test_Data/Test-datashield-load-data_as_resource.R` (see image below).
+
+<p align="center">
+    <img src="docs/imgs/data-loading.png" alt="data-loading.png" width=500 />
+</p>
   
 ### 3.7 Basic DataSHIELD Client Authentication and Data Access
 
