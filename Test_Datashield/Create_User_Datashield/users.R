@@ -35,7 +35,7 @@ check_pw_format = function(password, user)
 
 user_name="user-test"
 password= 'P@ssw0rd'
-#groups= c('opal-user') to remove
+#groups= c('opal-user')
 
 #check password to create user.
 #check_pw_format("Passw0rd!", "Alice")  # Valid password (TRUE)
