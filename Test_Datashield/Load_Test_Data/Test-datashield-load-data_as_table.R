@@ -12,7 +12,8 @@ url="https://your-domain.com"
 user_name='administrator'
 password= 'administrator'
 
-#connect to server 
+
+#connect to server
 connections <- opal.login(user_name,password, url=url)
 
 #upload to table function
@@ -20,18 +21,23 @@ upload_table_iris = function(connections,data, table_name, project_name, users){
   data         <- as_tibble(data, rownames = '_row_id_')
   opal.table_save(connections, data, project = project_name, table =table_name, id.name = "_row_id_", force = TRUE)
   #give permission to perform analysis
-  opal.table_perm_add(connections, project_name, table_name, subject = users, type = "group", permission = "view")
+  #opal.table_perm_add(connections, project_name, table_name, subject = users, type = "group", permission = "view")
+  opal.table_perm_add(connections, project_name, table_name, subject = users, type = "user", permission = "view")
+
 }
 
 
 project_name = 'TestDatashield'
 table_name= "DataShield_iris"
-users = c('opal-user')
+#users = c('opal-user')
+users = 'user-test'
 
 
 #create project
 if(!opal.project_exists(connections,project_name)){
-      opal.project_create(connections, project_name, database = "postgresdb")
+      #opal.project_create(connections, project_name, database = "postgresdb")
+      opal.project_create(connections, project_name, database = "mongodb")
+
     }
 
 #upload iris data to Datashield project table
