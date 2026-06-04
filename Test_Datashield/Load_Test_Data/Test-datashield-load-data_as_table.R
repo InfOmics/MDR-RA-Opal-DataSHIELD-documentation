@@ -35,9 +35,7 @@ users = 'user-test'
 
 #create project
 if(!opal.project_exists(connections,project_name)){
-      #opal.project_create(connections, project_name, database = "postgresdb")
-      opal.project_create(connections, project_name, database = "mongodb")
-
+      opal.project_create(connections, project_name, database = "postgresdb")
     }
 
 #upload iris data to Datashield project table
