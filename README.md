@@ -782,7 +782,7 @@ data must be uploaded as a resource using the script `Load_Test_Data/Test-datash
 </p>
 
 
-A video tutorial on how to manage the Opal–DataSHIELD ecosystem is available [here](https://drive.google.com/file/d/1azyIOEjaLd2vuikOdIDH71VfNEuNiF2I/view?usp=sharing)
+A video tutorial on how to manage the Opal–DataSHIELD ecosystem is available [here](https://drive.google.com/file/d/1azyIOEjaLd2vuikOdIDH71VfNEuNiF2I/view?usp=sharing).
 
 ### 3.7 Basic DataSHIELD Client Authentication and Data Access
 
