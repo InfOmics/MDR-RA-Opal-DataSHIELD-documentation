@@ -1,6 +1,6 @@
 services:
         reverse-proxy:
-                image: traefik:v3.6.1
+                image: traefik:v3.7.5
                 container_name: traefik
                 restart: always
                 ports:
@@ -53,8 +53,12 @@ services:
                         - "traefik.http.routers.opal.rule=Host(`${IP_DOMAIN}`)"  # Route traffic for this domain
                         - "traefik.http.routers.opal.entrypoints=websecure"
                         - "traefik.http.routers.opal.tls=true"
+                        - "traefik.http.services.opal.loadbalancer.server.port=8080"
+                        - "traefik.http.services.opal.loadbalancer.server.scheme=http"
                 volumes:
                         - ./target/test-opal:/srv
+                        
+                        
 
         postgresdata:
                 image: postgres:17.2
@@ -68,7 +72,10 @@ services:
                         - ./db/postgres:/var/lib/postgresql/data
 
         rock:
-                image:  infomics/rock-omics2:latest
+                image: infomics/rock-omics2:latest
                 container_name: rock
                 pull_policy: always
                 restart: always
+                environment:
+                        - OPENBLAS_CORETYPE=Haswell
+
